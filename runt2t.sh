@@ -6,7 +6,7 @@ PROBLEM=translate_ende_wmt32k_packed
 DATA_DIR=gs://ssystore1/transformer/data
 OUT_DIR=gs://ssystore1/anothertransformer/out
 TPU_NAME=ssy-mtf-ctpu
-
+gsutil rm -r ${OUT_DIR}
 /home/shengyushen_gmail_com/.local/bin/t2t-trainer \
   --model=$MODEL \
   --hparams_set=$CONF \
