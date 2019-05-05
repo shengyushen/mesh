@@ -1,0 +1,778 @@
+WARNING:tensorflow:Not all hyperparameter sets work on TPU. Prefer hparams_sets with a '_tpu' suffix, e.g. transformer_tpu, if available for your model.
+WARNING:tensorflow:Estimator's model_fn (<function wrapping_model_fn at 0x7fabc969d848>) includes params argument, but params are not passed to Estimator.
+INFO:tensorflow:Using config: {'_save_checkpoints_secs': None, '_num_ps_replicas': 0, '_keep_checkpoint_max': 20, '_task_type': 'worker', '_global_id_in_cluster': 0, '_is_chief': True, '_tpu_config': TPUConfig(iterations_per_loop=100, num_shards=8, num_cores_per_replica=1, per_host_input_for_training=4, tpu_job_name=None, initial_infeed_sleep_secs=None, input_partition_dims=None), '_cluster_spec': <tensorflow.python.training.server_lib.ClusterSpec object at 0x7fabc93b2610>, '_model_dir': 'gs://ssystore1/anothertransformer2019-05-05-14:49:30/out', '_protocol': None, '_save_checkpoints_steps': None, '_keep_checkpoint_every_n_hours': 10000, '_service': None, '_session_config': gpu_options {
+  per_process_gpu_memory_fraction: 0.95
+}
+allow_soft_placement: true
+graph_options {
+}
+cluster_def {
+  job {
+    name: "worker"
+    tasks {
+      key: 0
+      value: "10.240.1.10:8470"
+    }
+  }
+}
+isolate_session_state: true
+, 'use_tpu': True, '_tf_random_seed': None, '_save_summary_steps': 100, '_device_fn': None, '_cluster': <tensorflow.python.distribute.cluster_resolver.tpu_cluster_resolver.TPUClusterResolver object at 0x7fabc9d88a90>, '_experimental_distribute': None, '_num_worker_replicas': 1, '_task_id': 0, '_log_step_count_steps': None, '_evaluation_master': u'grpc://10.240.1.10:8470', '_eval_distribute': None, '_train_distribute': None, '_master': u'grpc://10.240.1.10:8470'}
+INFO:tensorflow:_TPUContext: eval_on_tpu True
+WARNING:tensorflow:ValidationMonitor only works with --schedule=train_and_evaluate
+INFO:tensorflow:Not using Distribute Coordinator.
+WARNING:tensorflow:TF_CONFIG should not be empty in distributed environment.
+INFO:tensorflow:Start Tensorflow server.
+2019-05-05 14:49:37.261679: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2019-05-05 14:49:37.266792: I tensorflow/core/platform/profile_utils/cpu_utils.cc:94] CPU Frequency: 2300000000 Hz
+2019-05-05 14:49:37.266983: I tensorflow/compiler/xla/service/service.cc:150] XLA service 0x5613170a3ba0 executing computations on platform Host. Devices:
+2019-05-05 14:49:37.267005: I tensorflow/compiler/xla/service/service.cc:158]   StreamExecutor device (0): <undefined>, <undefined>
+2019-05-05 14:49:37.268702: I tensorflow/core/distributed_runtime/rpc/grpc_channel.cc:252] Initialize GrpcChannelCache for job worker -> {0 -> localhost:8470}
+2019-05-05 14:49:37.269621: I tensorflow/core/distributed_runtime/rpc/grpc_server_lib.cc:391] Started server with target: grpc://localhost:8470
+INFO:tensorflow:Waiting 5 secs before starting training.
+INFO:tensorflow:Querying Tensorflow master (grpc://10.240.1.10:8470) for TPU system metadata.
+2019-05-05 14:49:42.417329: W tensorflow/core/distributed_runtime/rpc/grpc_session.cc:354] GrpcSession::ListDevices will initialize the session with an empty graph and other defaults because the session has not yet been created.
+INFO:tensorflow:Initializing TPU system (master: grpc://10.240.1.10:8470) to fetch topology for model parallelism. This might take a while.
+INFO:tensorflow:Found TPU system:
+INFO:tensorflow:*** Num TPU Cores: 8
+INFO:tensorflow:*** Num TPU Workers: 1
+INFO:tensorflow:*** Num TPU Cores Per Worker: 8
+INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:CPU:0, CPU, -1, 10878148581836331656)
+INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:XLA_CPU:0, XLA_CPU, 17179869184, 14293072968128730860)
+INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:TPU:0, TPU, 17179869184, 8837782752977530696)
+INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:TPU:1, TPU, 17179869184, 3929733870957806383)
+INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:TPU:2, TPU, 17179869184, 5136652391220167233)
+INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:TPU:3, TPU, 17179869184, 2456077063870522134)
+INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:TPU:4, TPU, 17179869184, 6986037888145099662)
+INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:TPU:5, TPU, 17179869184, 10416346730271066680)
+INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:TPU:6, TPU, 17179869184, 7611274272961076017)
+INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:TPU:7, TPU, 17179869184, 964147280132974488)
+INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:TPU_SYSTEM:0, TPU_SYSTEM, 17179869184, 15250990034316351164)
+WARNING:tensorflow:From /usr/local/lib/python2.7/dist-packages/tensorflow/python/ops/resource_variable_ops.py:435: colocate_with (from tensorflow.python.framework.ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Colocations handled automatically by placer.
+INFO:tensorflow:Calling model_fn.
+INFO:tensorflow:Reading data files from gs://ssystore1/transformer/data/translate_ende_wmt32k_packed-train*
+INFO:tensorflow:partition: 0 num_data_files: 100
+WARNING:tensorflow:From /home/shengyushen_gmail_com/.local/lib/python2.7/site-packages/tensor2tensor/utils/data_reader.py:275: tf_record_iterator (from tensorflow.python.lib.io.tf_record) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use eager execution and: 
+`tf.data.TFRecordDataset(path)`
+WARNING:tensorflow:From /home/shengyushen_gmail_com/.local/lib/python2.7/site-packages/tensor2tensor/utils/data_reader.py:37: to_int32 (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.cast instead.
+INFO:tensorflow:num_cores_per_replica: 1
+INFO:tensorflow:computation_shape: [1, 1, 1]
+INFO:tensorflow:num_replicas: 8
+INFO:tensorflow:device_assignment.topology.device_coordinates: [[[0 0 0]
+  [0 0 1]
+  [0 1 0]
+  [0 1 1]
+  [1 0 0]
+  [1 0 1]
+  [1 1 0]
+  [1 1 1]]]
+INFO:tensorflow:device_assignment.core_assignment: [[[0 0 0]]
+
+ [[0 0 1]]
+
+ [[0 1 0]]
+
+ [[0 1 1]]
+
+ [[1 0 0]]
+
+ [[1 0 1]]
+
+ [[1 1 0]]
+
+ [[1 1 1]]]
+INFO:tensorflow:Setting T2TModel mode to 'train'
+INFO:tensorflow:SimdMeshImpl init: Shape[batch=8] LayoutRulesset([('heads', 'model'), ('batch', 'batch'), ('d_ff', 'model'), ('vocab', 'model')])
+INFO:tensorflow:targets = Tensor("InfeedQueue/dequeue:4", shape=(128, 256, 1, 1), dtype=int32, device=/device:TPU_REPLICATED_CORE:0)
+INFO:tensorflow:states = None
+INFO:tensorflow:states = None
+WARNING:tensorflow:From /home/shengyushen_gmail_com/.local/lib/python2.7/site-packages/tensor2tensor/utils/learning_rate.py:107: to_float (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.cast instead.
+INFO:tensorflow:Create pnum_tensor
+INFO:tensorflow:Variable stacked/transformer/encoder/att_0/att/qkvo                   size 75497472     slice_size 75497472     Shape[stacked=18, qkvo=4, heads=8, d_model=1024, d_kv=128]  
+INFO:tensorflow:    transformer/encoder/att_0/att/qkvo
+INFO:tensorflow:    transformer/encoder/att_2/att/qkvo
+INFO:tensorflow:    transformer/encoder/att_4/att/qkvo
+INFO:tensorflow:    transformer/encoder/att_6/att/qkvo
+INFO:tensorflow:    transformer/encoder/att_8/att/qkvo
+INFO:tensorflow:    transformer/encoder/att_10/att/qkvo
+INFO:tensorflow:    transformer/decoder/att_0/att/qkvo
+INFO:tensorflow:    transformer/decoder/enc_att_1/enc_att/qkvo
+INFO:tensorflow:    transformer/decoder/att_3/att/qkvo
+INFO:tensorflow:    transformer/decoder/enc_att_4/enc_att/qkvo
+INFO:tensorflow:    transformer/decoder/att_6/att/qkvo
+INFO:tensorflow:    transformer/decoder/enc_att_7/enc_att/qkvo
+INFO:tensorflow:    transformer/decoder/att_9/att/qkvo
+INFO:tensorflow:    transformer/decoder/enc_att_10/enc_att/qkvo
+INFO:tensorflow:    transformer/decoder/att_12/att/qkvo
+INFO:tensorflow:    transformer/decoder/enc_att_13/enc_att/qkvo
+INFO:tensorflow:    transformer/decoder/att_15/att/qkvo
+INFO:tensorflow:    transformer/decoder/enc_att_16/enc_att/qkvo
+INFO:tensorflow:Variable stacked/transformer/encoder/drd_1/dense_relu_dense/wi/kernel size 50331648     slice_size 50331648     Shape[stacked=12, d_model=1024, d_ff=4096]                  
+INFO:tensorflow:    transformer/encoder/drd_1/dense_relu_dense/wi/kernel
+INFO:tensorflow:    transformer/encoder/drd_3/dense_relu_dense/wi/kernel
+INFO:tensorflow:    transformer/encoder/drd_5/dense_relu_dense/wi/kernel
+INFO:tensorflow:    transformer/encoder/drd_7/dense_relu_dense/wi/kernel
+INFO:tensorflow:    transformer/encoder/drd_9/dense_relu_dense/wi/kernel
+INFO:tensorflow:    transformer/encoder/drd_11/dense_relu_dense/wi/kernel
+INFO:tensorflow:    transformer/decoder/drd_2/dense_relu_dense/wi/kernel
+INFO:tensorflow:    transformer/decoder/drd_5/dense_relu_dense/wi/kernel
+INFO:tensorflow:    transformer/decoder/drd_8/dense_relu_dense/wi/kernel
+INFO:tensorflow:    transformer/decoder/drd_11/dense_relu_dense/wi/kernel
+INFO:tensorflow:    transformer/decoder/drd_14/dense_relu_dense/wi/kernel
+INFO:tensorflow:    transformer/decoder/drd_17/dense_relu_dense/wi/kernel
+INFO:tensorflow:Variable stacked/transformer/encoder/drd_1/dense_relu_dense/wo/kernel size 50331648     slice_size 50331648     Shape[stacked=12, d_ff=4096, d_model=1024]                  
+INFO:tensorflow:    transformer/encoder/drd_1/dense_relu_dense/wo/kernel
+INFO:tensorflow:    transformer/encoder/drd_3/dense_relu_dense/wo/kernel
+INFO:tensorflow:    transformer/encoder/drd_5/dense_relu_dense/wo/kernel
+INFO:tensorflow:    transformer/encoder/drd_7/dense_relu_dense/wo/kernel
+INFO:tensorflow:    transformer/encoder/drd_9/dense_relu_dense/wo/kernel
+INFO:tensorflow:    transformer/encoder/drd_11/dense_relu_dense/wo/kernel
+INFO:tensorflow:    transformer/decoder/drd_2/dense_relu_dense/wo/kernel
+INFO:tensorflow:    transformer/decoder/drd_5/dense_relu_dense/wo/kernel
+INFO:tensorflow:    transformer/decoder/drd_8/dense_relu_dense/wo/kernel
+INFO:tensorflow:    transformer/decoder/drd_11/dense_relu_dense/wo/kernel
+INFO:tensorflow:    transformer/decoder/drd_14/dense_relu_dense/wo/kernel
+INFO:tensorflow:    transformer/decoder/drd_17/dense_relu_dense/wo/kernel
+INFO:tensorflow:Variable stacked/transformer/targets_embedding                        size 68419584     slice_size 68419584     Shape[stacked=2, vocab=33408, d_model=1024]                 
+INFO:tensorflow:    transformer/targets_embedding
+INFO:tensorflow:    transformer/softmax
+INFO:tensorflow:Variable transformer/decoder/layer_norm_scale                         size 19456        slice_size 19456        Shape[layer_norms=19, d_model=1024]                         
+INFO:tensorflow:Variable transformer/encoder/layer_norm_scale                         size 13312        slice_size 13312        Shape[layer_norms=13, d_model=1024]                         
+INFO:tensorflow:Variable transformer/positional_embedding                             size 262144       slice_size 262144       Shape[max_length=256, d_model=1024]                         
+INFO:tensorflow:Trainable Variables            count: 7       Total size: 244875264        Total slice_size: 244875264      
+INFO:tensorflow:All Variables                  count: 15      Total size: 245764608        Total slice_size: 245764608      
+INFO:tensorflow:Counters:
+allconcat: 8.76e+09
+ allconcat/0: 8.76e+09
+  allconcat/0/reshape_op: 8.76e+09
+allreduce: 1.96e+09
+ allreduce/[0]: 1.96e+09
+  allreduce/[0]/einsum_op: 1.96e+09
+  allreduce/[0]/reduce_op: 8
+einsum: 2.84e+13
+einsum_unique: 2.84e+13
+output: 1.17e+11
+ output/AddOperation: 1.27e+10
+ output/BinaryOpWithBroadcasting: 1.66e+09
+ output/BroadcastOperation: 4.47e+09
+ output/Constant: 8
+ output/EinsumOperation: 5.22e+10
+ output/ImportOperation: 1.57e+06
+ output/MinMaxOperation: 752
+ output/OneHotOperation: 3.3e+09
+ output/RandomOperation: 1.11e+09
+ output/ReduceOperation: 1.78e+08
+ output/ReshapeOperation: 9.63e+09
+ output/ScalarAddOperation: 1.96e+09
+ output/ScalarMultiplyOperation: 1.15e+09
+ output/ShiftOperation: 3.28e+04
+ output/SlicewiseOperation: 1.88e+10
+ output/StackOperation: 2.57e+09
+ output/StackedVariable: 1.96e+09
+ output/StopGradient: 2.3e+09
+ output/UnstackOperation: 2.57e+09
+ output/Variable: 2.62e+06
+output_unique: 8.34e+10
+ output_unique/AddOperation: 1.25e+10
+ output_unique/BinaryOpWithBroadcasting: 1.66e+09
+ output_unique/BroadcastOperation: 4.47e+09
+ output_unique/Constant: 1
+ output_unique/EinsumOperation: 4.34e+10
+ output_unique/ImportOperation: 1.97e+05
+ output_unique/MinMaxOperation: 94
+ output_unique/OneHotOperation: 3.3e+09
+ output_unique/RandomOperation: 1.11e+09
+ output_unique/ReduceOperation: 1.72e+08
+ output_unique/ReshapeOperation: 1.97e+09
+ output_unique/ScalarAddOperation: 2.46e+08
+ output_unique/ScalarMultiplyOperation: 1.13e+09
+ output_unique/ShiftOperation: 3.28e+04
+ output_unique/SlicewiseOperation: 1.02e+10
+ output_unique/StackOperation: 3.21e+08
+ output_unique/StackedVariable: 2.45e+08
+ output_unique/StopGradient: 2.3e+09
+ output_unique/UnstackOperation: 3.21e+08
+ output_unique/Variable: 3.28e+05
+variables: 2.46e+08
+ variables/trainable: 2.45e+08
+ variables/untrainable: 8.89e+05
+INFO:tensorflow:Create CheckpointSaverHook.
+WARNING:tensorflow:1 unsupported operations found: 
+  ScalarSummary (learning_rate)
+INFO:tensorflow:Done calling model_fn.
+INFO:tensorflow:TPU job name worker
+INFO:tensorflow:Starting the session.
+INFO:tensorflow:Graph was finalized.
+INFO:tensorflow:Running local_init_op.
+INFO:tensorflow:Done running local_init_op.
+INFO:tensorflow:Initialized dataset iterators in 0 seconds
+INFO:tensorflow:Installing graceful shutdown hook.
+2019-05-05 14:50:13.275219: W tensorflow/core/distributed_runtime/rpc/grpc_session.cc:354] GrpcSession::ListDevices will initialize the session with an empty graph and other defaults because the session has not yet been created.
+INFO:tensorflow:Creating heartbeat manager for ['/job:worker/replica:0/task:0/device:CPU:0']
+INFO:tensorflow:Configuring worker heartbeat: shutdown_mode: WAIT_FOR_COORDINATOR
+
+INFO:tensorflow:Init TPU system
+INFO:tensorflow:Initialized TPU in 4 seconds
+INFO:tensorflow:Starting infeed thread controller.
+INFO:tensorflow:Starting outfeed thread controller.
+INFO:tensorflow:Saving checkpoints for 0 into gs://ssystore1/anothertransformer2019-05-05-14:49:30/out/model.ckpt.
+INFO:tensorflow:Before Save.
+INFO:tensorflow:About to write a checkpoint
+INFO:tensorflow:Done writing checkpoint.
+INFO:tensorflow:Enqueue next (100) batch(es) of data to infeed.
+INFO:tensorflow:Dequeue next (100) batch(es) of data from outfeed.
+INFO:tensorflow:loss = 10.625, step = 100
+INFO:tensorflow:Enqueue next (100) batch(es) of data to infeed.
+INFO:tensorflow:Dequeue next (100) batch(es) of data from outfeed.
+INFO:tensorflow:loss = 10.75, step = 200 (51.252 sec)
+INFO:tensorflow:global_step/sec: 1.95115
+INFO:tensorflow:examples/sec: 249.747
+INFO:tensorflow:Enqueue next (100) batch(es) of data to infeed.
+INFO:tensorflow:Dequeue next (100) batch(es) of data from outfeed.
+INFO:tensorflow:loss = 10.6875, step = 300 (46.499 sec)
+INFO:tensorflow:global_step/sec: 2.15062
+INFO:tensorflow:examples/sec: 275.279
+INFO:tensorflow:Enqueue next (100) batch(es) of data to infeed.
+INFO:tensorflow:Dequeue next (100) batch(es) of data from outfeed.
+INFO:tensorflow:loss = 10.4375, step = 400 (46.926 sec)
+INFO:tensorflow:global_step/sec: 2.131
+INFO:tensorflow:examples/sec: 272.768
+INFO:tensorflow:Enqueue next (100) batch(es) of data to infeed.
+INFO:tensorflow:Dequeue next (100) batch(es) of data from outfeed.
+INFO:tensorflow:loss = 10.375, step = 500 (46.499 sec)
+INFO:tensorflow:global_step/sec: 2.15058
+INFO:tensorflow:examples/sec: 275.275
+INFO:tensorflow:Enqueue next (100) batch(es) of data to infeed.
+INFO:tensorflow:Dequeue next (100) batch(es) of data from outfeed.
+INFO:tensorflow:loss = 10.0, step = 600 (46.498 sec)
+INFO:tensorflow:global_step/sec: 2.15062
+INFO:tensorflow:examples/sec: 275.279
+INFO:tensorflow:Enqueue next (100) batch(es) of data to infeed.
+INFO:tensorflow:Dequeue next (100) batch(es) of data from outfeed.
+INFO:tensorflow:loss = 9.875, step = 700 (47.039 sec)
+INFO:tensorflow:global_step/sec: 2.12592
+INFO:tensorflow:examples/sec: 272.117
+INFO:tensorflow:Enqueue next (100) batch(es) of data to infeed.
+INFO:tensorflow:Dequeue next (100) batch(es) of data from outfeed.
+INFO:tensorflow:loss = 9.75, step = 800 (46.498 sec)
+INFO:tensorflow:global_step/sec: 2.15065
+INFO:tensorflow:examples/sec: 275.283
+INFO:tensorflow:Enqueue next (100) batch(es) of data to infeed.
+INFO:tensorflow:Dequeue next (100) batch(es) of data from outfeed.
+INFO:tensorflow:loss = 9.75, step = 900 (46.500 sec)
+INFO:tensorflow:global_step/sec: 2.15056
+INFO:tensorflow:examples/sec: 275.271
+INFO:tensorflow:Enqueue next (100) batch(es) of data to infeed.
+INFO:tensorflow:Dequeue next (100) batch(es) of data from outfeed.
+INFO:tensorflow:loss = 9.6875, step = 1000 (46.908 sec)
+INFO:tensorflow:global_step/sec: 2.13184
+INFO:tensorflow:examples/sec: 272.875
+INFO:tensorflow:Stop infeed thread controller
+INFO:tensorflow:Shutting down InfeedController thread.
+INFO:tensorflow:InfeedController received shutdown signal, stopping.
+INFO:tensorflow:Infeed thread finished, shutting down.
+INFO:tensorflow:infeed marked as finished
+INFO:tensorflow:Stop output thread controller
+INFO:tensorflow:Shutting down OutfeedController thread.
+INFO:tensorflow:OutfeedController received shutdown signal, stopping.
+INFO:tensorflow:Outfeed thread finished, shutting down.
+INFO:tensorflow:outfeed marked as finished
+INFO:tensorflow:Shutdown TPU system.
+INFO:tensorflow:Saving checkpoints for 1000 into gs://ssystore1/anothertransformer2019-05-05-14:49:30/out/model.ckpt.
+INFO:tensorflow:Before Save.
+INFO:tensorflow:About to write a checkpoint
+INFO:tensorflow:Done writing checkpoint.
+INFO:tensorflow:Done with the session.
+INFO:tensorflow:Loss for final step: 9.6875.
+INFO:tensorflow:training_loop marked as finished
+INFO:tensorflow:Calling model_fn.
+INFO:tensorflow:Reading data files from gs://ssystore1/transformer/data/translate_ende_wmt32k_packed-dev*
+INFO:tensorflow:partition: 0 num_data_files: 1
+INFO:tensorflow:Setting T2TModel mode to 'eval'
+INFO:tensorflow:Setting hparams.layer_prepostprocess_dropout to 0.0
+INFO:tensorflow:Setting hparams.symbol_dropout to 0.0
+INFO:tensorflow:Setting hparams.label_smoothing to 0.0
+INFO:tensorflow:Setting hparams.attention_dropout to 0.0
+INFO:tensorflow:Setting hparams.dropout to 0.0
+INFO:tensorflow:Setting hparams.relu_dropout to 0.0
+INFO:tensorflow:SimdMeshImpl init: Shape[batch=8] LayoutRulesset([('heads', 'model'), ('batch', 'batch'), ('d_ff', 'model'), ('vocab', 'model')])
+INFO:tensorflow:targets = Tensor("InfeedQueue/dequeue:4", shape=(128, 256, 1, 1), dtype=int32, device=/device:TPU_REPLICATED_CORE:0)
+INFO:tensorflow:states = None
+INFO:tensorflow:states = None
+INFO:tensorflow:Create pnum_tensor
+INFO:tensorflow:Variable stacked/transformer/encoder/att_0/att/qkvo                   size 75497472     slice_size 75497472     Shape[stacked=18, qkvo=4, heads=8, d_model=1024, d_kv=128]  
+INFO:tensorflow:    transformer/encoder/att_0/att/qkvo
+INFO:tensorflow:    transformer/encoder/att_2/att/qkvo
+INFO:tensorflow:    transformer/encoder/att_4/att/qkvo
+INFO:tensorflow:    transformer/encoder/att_6/att/qkvo
+INFO:tensorflow:    transformer/encoder/att_8/att/qkvo
+INFO:tensorflow:    transformer/encoder/att_10/att/qkvo
+INFO:tensorflow:    transformer/decoder/att_0/att/qkvo
+INFO:tensorflow:    transformer/decoder/enc_att_1/enc_att/qkvo
+INFO:tensorflow:    transformer/decoder/att_3/att/qkvo
+INFO:tensorflow:    transformer/decoder/enc_att_4/enc_att/qkvo
+INFO:tensorflow:    transformer/decoder/att_6/att/qkvo
+INFO:tensorflow:    transformer/decoder/enc_att_7/enc_att/qkvo
+INFO:tensorflow:    transformer/decoder/att_9/att/qkvo
+INFO:tensorflow:    transformer/decoder/enc_att_10/enc_att/qkvo
+INFO:tensorflow:    transformer/decoder/att_12/att/qkvo
+INFO:tensorflow:    transformer/decoder/enc_att_13/enc_att/qkvo
+INFO:tensorflow:    transformer/decoder/att_15/att/qkvo
+INFO:tensorflow:    transformer/decoder/enc_att_16/enc_att/qkvo
+INFO:tensorflow:Variable stacked/transformer/encoder/drd_1/dense_relu_dense/wi/kernel size 50331648     slice_size 50331648     Shape[stacked=12, d_model=1024, d_ff=4096]                  
+INFO:tensorflow:    transformer/encoder/drd_1/dense_relu_dense/wi/kernel
+INFO:tensorflow:    transformer/encoder/drd_3/dense_relu_dense/wi/kernel
+INFO:tensorflow:    transformer/encoder/drd_5/dense_relu_dense/wi/kernel
+INFO:tensorflow:    transformer/encoder/drd_7/dense_relu_dense/wi/kernel
+INFO:tensorflow:    transformer/encoder/drd_9/dense_relu_dense/wi/kernel
+INFO:tensorflow:    transformer/encoder/drd_11/dense_relu_dense/wi/kernel
+INFO:tensorflow:    transformer/decoder/drd_2/dense_relu_dense/wi/kernel
+INFO:tensorflow:    transformer/decoder/drd_5/dense_relu_dense/wi/kernel
+INFO:tensorflow:    transformer/decoder/drd_8/dense_relu_dense/wi/kernel
+INFO:tensorflow:    transformer/decoder/drd_11/dense_relu_dense/wi/kernel
+INFO:tensorflow:    transformer/decoder/drd_14/dense_relu_dense/wi/kernel
+INFO:tensorflow:    transformer/decoder/drd_17/dense_relu_dense/wi/kernel
+INFO:tensorflow:Variable stacked/transformer/encoder/drd_1/dense_relu_dense/wo/kernel size 50331648     slice_size 50331648     Shape[stacked=12, d_ff=4096, d_model=1024]                  
+INFO:tensorflow:    transformer/encoder/drd_1/dense_relu_dense/wo/kernel
+INFO:tensorflow:    transformer/encoder/drd_3/dense_relu_dense/wo/kernel
+INFO:tensorflow:    transformer/encoder/drd_5/dense_relu_dense/wo/kernel
+INFO:tensorflow:    transformer/encoder/drd_7/dense_relu_dense/wo/kernel
+INFO:tensorflow:    transformer/encoder/drd_9/dense_relu_dense/wo/kernel
+INFO:tensorflow:    transformer/encoder/drd_11/dense_relu_dense/wo/kernel
+INFO:tensorflow:    transformer/decoder/drd_2/dense_relu_dense/wo/kernel
+INFO:tensorflow:    transformer/decoder/drd_5/dense_relu_dense/wo/kernel
+INFO:tensorflow:    transformer/decoder/drd_8/dense_relu_dense/wo/kernel
+INFO:tensorflow:    transformer/decoder/drd_11/dense_relu_dense/wo/kernel
+INFO:tensorflow:    transformer/decoder/drd_14/dense_relu_dense/wo/kernel
+INFO:tensorflow:    transformer/decoder/drd_17/dense_relu_dense/wo/kernel
+INFO:tensorflow:Variable stacked/transformer/targets_embedding                        size 68419584     slice_size 68419584     Shape[stacked=2, vocab=33408, d_model=1024]                 
+INFO:tensorflow:    transformer/targets_embedding
+INFO:tensorflow:    transformer/softmax
+INFO:tensorflow:Variable transformer/decoder/layer_norm_scale                         size 19456        slice_size 19456        Shape[layer_norms=19, d_model=1024]                         
+INFO:tensorflow:Variable transformer/encoder/layer_norm_scale                         size 13312        slice_size 13312        Shape[layer_norms=13, d_model=1024]                         
+INFO:tensorflow:Variable transformer/positional_embedding                             size 262144       slice_size 262144       Shape[max_length=256, d_model=1024]                         
+INFO:tensorflow:Trainable Variables            count: 7       Total size: 244875264        Total slice_size: 244875264      
+INFO:tensorflow:All Variables                  count: 7       Total size: 244875264        Total slice_size: 244875264      
+INFO:tensorflow:Counters:
+allconcat: 8.76e+09
+ allconcat/0: 8.76e+09
+  allconcat/0/reshape_op: 8.76e+09
+allreduce: 8
+ allreduce/[0]: 8
+  allreduce/[0]/reduce_op: 8
+einsum: 9.47e+12
+einsum_unique: 9.47e+12
+output: 4.44e+10
+ output/AddOperation: 6.9e+09
+ output/BinaryOpWithBroadcasting: 3.36e+07
+ output/EinsumOperation: 1.07e+10
+ output/ImportOperation: 1.57e+06
+ output/OneHotOperation: 3.3e+09
+ output/ReduceOperation: 1.06e+07
+ output/ReshapeOperation: 9.19e+09
+ output/ScalarAddOperation: 1.05e+06
+ output/ScalarMultiplyOperation: 3.46e+07
+ output/ShiftOperation: 3.28e+04
+ output/SlicewiseOperation: 7.34e+09
+ output/StackedVariable: 1.96e+09
+ output/StopGradient: 2.3e+09
+ output/UnstackOperation: 2.56e+09
+ output/Variable: 2.36e+06
+output_unique: 3.27e+10
+ output_unique/AddOperation: 6.9e+09
+ output_unique/BinaryOpWithBroadcasting: 3.36e+07
+ output_unique/EinsumOperation: 1.07e+10
+ output_unique/ImportOperation: 1.97e+05
+ output_unique/OneHotOperation: 3.3e+09
+ output_unique/ReduceOperation: 1.06e+07
+ output_unique/ReshapeOperation: 1.53e+09
+ output_unique/ScalarAddOperation: 1.05e+06
+ output_unique/ScalarMultiplyOperation: 3.46e+07
+ output_unique/ShiftOperation: 3.28e+04
+ output_unique/SlicewiseOperation: 7.34e+09
+ output_unique/StackedVariable: 2.45e+08
+ output_unique/StopGradient: 2.3e+09
+ output_unique/UnstackOperation: 3.2e+08
+ output_unique/Variable: 2.95e+05
+variables: 2.45e+08
+ variables/trainable: 2.45e+08
+INFO:tensorflow:Create CheckpointSaverHook.
+WARNING:tensorflow:From /usr/local/lib/python2.7/dist-packages/tensorflow/contrib/tpu/python/tpu/tpu_estimator.py:2655: div (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Deprecated in favor of operator or tf.math.divide.
+INFO:tensorflow:Done calling model_fn.
+INFO:tensorflow:Starting evaluation at 2019-05-05T15:00:49Z
+INFO:tensorflow:TPU job name worker
+INFO:tensorflow:Graph was finalized.
+WARNING:tensorflow:From /usr/local/lib/python2.7/dist-packages/tensorflow/python/training/saver.py:1266: checkpoint_exists (from tensorflow.python.training.checkpoint_management) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use standard file APIs to check for files with this prefix.
+INFO:tensorflow:Restoring parameters from gs://ssystore1/anothertransformer2019-05-05-14:49:30/out/model.ckpt-1000
+INFO:tensorflow:Running local_init_op.
+INFO:tensorflow:Done running local_init_op.
+INFO:tensorflow:Init TPU system
+INFO:tensorflow:Initialized TPU in 7 seconds
+INFO:tensorflow:Starting infeed thread controller.
+INFO:tensorflow:Starting outfeed thread controller.
+INFO:tensorflow:Initialized dataset iterators in 0 seconds
+INFO:tensorflow:Enqueue next (200) batch(es) of data to infeed.
+INFO:tensorflow:Dequeue next (200) batch(es) of data from outfeed.
+INFO:tensorflow:Error recorded from infeed: End of sequence
+	 [[node while/IteratorGetNext (defined at /usr/local/lib/python2.7/dist-packages/tensorflow_estimator/python/estimator/estimator.py:1112) ]]
+
+Caused by op u'while/IteratorGetNext', defined at:
+  File "/home/shengyushen_gmail_com/.local/bin/t2t-trainer", line 33, in <module>
+    tf.app.run()
+  File "/usr/local/lib/python2.7/dist-packages/tensorflow/python/platform/app.py", line 125, in run
+    _sys.exit(main(argv))
+  File "/home/shengyushen_gmail_com/.local/bin/t2t-trainer", line 28, in main
+    t2t_trainer.main(argv)
+  File "/home/shengyushen_gmail_com/.local/lib/python2.7/site-packages/tensor2tensor/bin/t2t_trainer.py", line 400, in main
+    execute_schedule(exp)
+  File "/home/shengyushen_gmail_com/.local/lib/python2.7/site-packages/tensor2tensor/bin/t2t_trainer.py", line 356, in execute_schedule
+    getattr(exp, FLAGS.schedule)()
+  File "/home/shengyushen_gmail_com/.local/lib/python2.7/site-packages/tensor2tensor/utils/trainer_lib.py", line 404, in continuous_train_and_eval
+    return self.evaluate()
+  File "/home/shengyushen_gmail_com/.local/lib/python2.7/site-packages/tensor2tensor/utils/trainer_lib.py", line 479, in evaluate
+    name=name)
+  File "/usr/local/lib/python2.7/dist-packages/tensorflow/contrib/tpu/python/tpu/tpu_estimator.py", line 2473, in evaluate
+    name=name)
+  File "/usr/local/lib/python2.7/dist-packages/tensorflow_estimator/python/estimator/estimator.py", line 469, in evaluate
+    name=name)
+  File "/usr/local/lib/python2.7/dist-packages/tensorflow_estimator/python/estimator/estimator.py", line 511, in _actual_eval
+    return _evaluate()
+  File "/usr/local/lib/python2.7/dist-packages/tensorflow_estimator/python/estimator/estimator.py", line 493, in _evaluate
+    self._evaluate_build_graph(input_fn, hooks, checkpoint_path))
+  File "/usr/local/lib/python2.7/dist-packages/tensorflow_estimator/python/estimator/estimator.py", line 1424, in _evaluate_build_graph
+    self._call_model_fn_eval(input_fn, self.config))
+  File "/usr/local/lib/python2.7/dist-packages/tensorflow_estimator/python/estimator/estimator.py", line 1460, in _call_model_fn_eval
+    features, labels, model_fn_lib.ModeKeys.EVAL, config)
+  File "/usr/local/lib/python2.7/dist-packages/tensorflow/contrib/tpu/python/tpu/tpu_estimator.py", line 2251, in _call_model_fn
+    config)
+  File "/usr/local/lib/python2.7/dist-packages/tensorflow_estimator/python/estimator/estimator.py", line 1112, in _call_model_fn
+    model_fn_results = self._model_fn(features=features, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/tensorflow/contrib/tpu/python/tpu/tpu_estimator.py", line 2547, in _model_fn
+    input_holders.generate_infeed_enqueue_ops_and_dequeue_fn())
+  File "/usr/local/lib/python2.7/dist-packages/tensorflow/contrib/tpu/python/tpu/tpu_estimator.py", line 1167, in generate_infeed_enqueue_ops_and_dequeue_fn
+    self._invoke_input_fn_and_record_structure())
+  File "/usr/local/lib/python2.7/dist-packages/tensorflow/contrib/tpu/python/tpu/tpu_estimator.py", line 1230, in _invoke_input_fn_and_record_structure
+    enqueue_ops.append(wrap_fn(device=host_device, op_fn=enqueue_ops_fn))
+  File "/usr/local/lib/python2.7/dist-packages/tensorflow/contrib/tpu/python/tpu/tpu_estimator.py", line 2945, in _wrap_computation_in_while_loop
+    parallel_iterations=1)
+  File "/usr/local/lib/python2.7/dist-packages/tensorflow/python/ops/control_flow_ops.py", line 3556, in while_loop
+    return_same_structure)
+  File "/usr/local/lib/python2.7/dist-packages/tensorflow/python/ops/control_flow_ops.py", line 3087, in BuildLoop
+    pred, body, original_loop_vars, loop_vars, shape_invariants)
+  File "/usr/local/lib/python2.7/dist-packages/tensorflow/python/ops/control_flow_ops.py", line 3022, in _BuildLoop
+    body_result = body(*packed_vars_for_body)
+  File "/usr/local/lib/python2.7/dist-packages/tensorflow/contrib/tpu/python/tpu/tpu_estimator.py", line 2934, in computation
+    with ops.control_dependencies(op_fn()):
+  File "/usr/local/lib/python2.7/dist-packages/tensorflow/contrib/tpu/python/tpu/tpu_estimator.py", line 957, in enqueue_ops_fn
+    features, labels = inputs.features_and_labels()  # Calls get_next()
+  File "/usr/local/lib/python2.7/dist-packages/tensorflow/contrib/tpu/python/tpu/tpu_estimator.py", line 3127, in features_and_labels
+    return _Inputs._parse_inputs(self._iterator.get_next())
+  File "/usr/local/lib/python2.7/dist-packages/tensorflow/python/data/ops/iterator_ops.py", line 414, in get_next
+    output_shapes=self._structure._flat_shapes, name=name)
+  File "/usr/local/lib/python2.7/dist-packages/tensorflow/python/ops/gen_dataset_ops.py", line 1685, in iterator_get_next
+    output_shapes=output_shapes, name=name)
+  File "/usr/local/lib/python2.7/dist-packages/tensorflow/python/framework/op_def_library.py", line 788, in _apply_op_helper
+    op_def=op_def)
+  File "/usr/local/lib/python2.7/dist-packages/tensorflow/python/util/deprecation.py", line 507, in new_func
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/tensorflow/python/framework/ops.py", line 3300, in create_op
+    op_def=op_def)
+  File "/usr/local/lib/python2.7/dist-packages/tensorflow/python/framework/ops.py", line 1801, in __init__
+    self._traceback = tf_stack.extract_stack()
+
+OutOfRangeError (see above for traceback): End of sequence
+	 [[node while/IteratorGetNext (defined at /usr/local/lib/python2.7/dist-packages/tensorflow_estimator/python/estimator/estimator.py:1112) ]]
+
+INFO:tensorflow:Error recorded from outfeed: Step was cancelled by an explicit call to `Session::Close()`.
+INFO:tensorflow:An error was raised. This may be due to a preemption in a connected worker or parameter server. The current session will be closed and a new session will be created. This error may also occur due to a gRPC failure caused by high memory or network bandwidth usage in the parameter servers. If this error occurs repeatedly, try increasing the number of parameter servers assigned to the job. Error: Socket closed
+INFO:tensorflow:Graph was finalized.
+INFO:tensorflow:Restoring parameters from gs://ssystore1/anothertransformer2019-05-05-14:49:30/out/model.ckpt-1000
+INFO:tensorflow:Running local_init_op.
+INFO:tensorflow:Done running local_init_op.
+INFO:tensorflow:Init TPU system
+INFO:tensorflow:Initialized TPU in 6 seconds
+INFO:tensorflow:Starting infeed thread controller.
+INFO:tensorflow:Starting outfeed thread controller.
+INFO:tensorflow:Initialized dataset iterators in 0 seconds
+INFO:tensorflow:Enqueue next (200) batch(es) of data to infeed.
+INFO:tensorflow:Dequeue next (200) batch(es) of data from outfeed.
+INFO:tensorflow:Error recorded from infeed: End of sequence
+	 [[node while/IteratorGetNext (defined at /usr/local/lib/python2.7/dist-packages/tensorflow_estimator/python/estimator/estimator.py:1112) ]]
+
+Caused by op u'while/IteratorGetNext', defined at:
+  File "/home/shengyushen_gmail_com/.local/bin/t2t-trainer", line 33, in <module>
+    tf.app.run()
+  File "/usr/local/lib/python2.7/dist-packages/tensorflow/python/platform/app.py", line 125, in run
+    _sys.exit(main(argv))
+  File "/home/shengyushen_gmail_com/.local/bin/t2t-trainer", line 28, in main
+    t2t_trainer.main(argv)
+  File "/home/shengyushen_gmail_com/.local/lib/python2.7/site-packages/tensor2tensor/bin/t2t_trainer.py", line 400, in main
+    execute_schedule(exp)
+  File "/home/shengyushen_gmail_com/.local/lib/python2.7/site-packages/tensor2tensor/bin/t2t_trainer.py", line 356, in execute_schedule
+    getattr(exp, FLAGS.schedule)()
+  File "/home/shengyushen_gmail_com/.local/lib/python2.7/site-packages/tensor2tensor/utils/trainer_lib.py", line 404, in continuous_train_and_eval
+    return self.evaluate()
+  File "/home/shengyushen_gmail_com/.local/lib/python2.7/site-packages/tensor2tensor/utils/trainer_lib.py", line 479, in evaluate
+    name=name)
+  File "/usr/local/lib/python2.7/dist-packages/tensorflow/contrib/tpu/python/tpu/tpu_estimator.py", line 2473, in evaluate
+    name=name)
+  File "/usr/local/lib/python2.7/dist-packages/tensorflow_estimator/python/estimator/estimator.py", line 469, in evaluate
+    name=name)
+  File "/usr/local/lib/python2.7/dist-packages/tensorflow_estimator/python/estimator/estimator.py", line 511, in _actual_eval
+    return _evaluate()
+  File "/usr/local/lib/python2.7/dist-packages/tensorflow_estimator/python/estimator/estimator.py", line 493, in _evaluate
+    self._evaluate_build_graph(input_fn, hooks, checkpoint_path))
+  File "/usr/local/lib/python2.7/dist-packages/tensorflow_estimator/python/estimator/estimator.py", line 1424, in _evaluate_build_graph
+    self._call_model_fn_eval(input_fn, self.config))
+  File "/usr/local/lib/python2.7/dist-packages/tensorflow_estimator/python/estimator/estimator.py", line 1460, in _call_model_fn_eval
+    features, labels, model_fn_lib.ModeKeys.EVAL, config)
+  File "/usr/local/lib/python2.7/dist-packages/tensorflow/contrib/tpu/python/tpu/tpu_estimator.py", line 2251, in _call_model_fn
+    config)
+  File "/usr/local/lib/python2.7/dist-packages/tensorflow_estimator/python/estimator/estimator.py", line 1112, in _call_model_fn
+    model_fn_results = self._model_fn(features=features, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/tensorflow/contrib/tpu/python/tpu/tpu_estimator.py", line 2547, in _model_fn
+    input_holders.generate_infeed_enqueue_ops_and_dequeue_fn())
+  File "/usr/local/lib/python2.7/dist-packages/tensorflow/contrib/tpu/python/tpu/tpu_estimator.py", line 1167, in generate_infeed_enqueue_ops_and_dequeue_fn
+    self._invoke_input_fn_and_record_structure())
+  File "/usr/local/lib/python2.7/dist-packages/tensorflow/contrib/tpu/python/tpu/tpu_estimator.py", line 1230, in _invoke_input_fn_and_record_structure
+    enqueue_ops.append(wrap_fn(device=host_device, op_fn=enqueue_ops_fn))
+  File "/usr/local/lib/python2.7/dist-packages/tensorflow/contrib/tpu/python/tpu/tpu_estimator.py", line 2945, in _wrap_computation_in_while_loop
+    parallel_iterations=1)
+  File "/usr/local/lib/python2.7/dist-packages/tensorflow/python/ops/control_flow_ops.py", line 3556, in while_loop
+    return_same_structure)
+  File "/usr/local/lib/python2.7/dist-packages/tensorflow/python/ops/control_flow_ops.py", line 3087, in BuildLoop
+    pred, body, original_loop_vars, loop_vars, shape_invariants)
+  File "/usr/local/lib/python2.7/dist-packages/tensorflow/python/ops/control_flow_ops.py", line 3022, in _BuildLoop
+    body_result = body(*packed_vars_for_body)
+  File "/usr/local/lib/python2.7/dist-packages/tensorflow/contrib/tpu/python/tpu/tpu_estimator.py", line 2934, in computation
+    with ops.control_dependencies(op_fn()):
+  File "/usr/local/lib/python2.7/dist-packages/tensorflow/contrib/tpu/python/tpu/tpu_estimator.py", line 957, in enqueue_ops_fn
+    features, labels = inputs.features_and_labels()  # Calls get_next()
+  File "/usr/local/lib/python2.7/dist-packages/tensorflow/contrib/tpu/python/tpu/tpu_estimator.py", line 3127, in features_and_labels
+    return _Inputs._parse_inputs(self._iterator.get_next())
+  File "/usr/local/lib/python2.7/dist-packages/tensorflow/python/data/ops/iterator_ops.py", line 414, in get_next
+    output_shapes=self._structure._flat_shapes, name=name)
+  File "/usr/local/lib/python2.7/dist-packages/tensorflow/python/ops/gen_dataset_ops.py", line 1685, in iterator_get_next
+    output_shapes=output_shapes, name=name)
+  File "/usr/local/lib/python2.7/dist-packages/tensorflow/python/framework/op_def_library.py", line 788, in _apply_op_helper
+    op_def=op_def)
+  File "/usr/local/lib/python2.7/dist-packages/tensorflow/python/util/deprecation.py", line 507, in new_func
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/tensorflow/python/framework/ops.py", line 3300, in create_op
+    op_def=op_def)
+  File "/usr/local/lib/python2.7/dist-packages/tensorflow/python/framework/ops.py", line 1801, in __init__
+    self._traceback = tf_stack.extract_stack()
+
+OutOfRangeError (see above for traceback): End of sequence
+	 [[node while/IteratorGetNext (defined at /usr/local/lib/python2.7/dist-packages/tensorflow_estimator/python/estimator/estimator.py:1112) ]]
+
+INFO:tensorflow:Error recorded from outfeed: Bad hardware status: 0x1
+	 [[node OutfeedDequeueTuple_4 (defined at /usr/local/lib/python2.7/dist-packages/tensorflow_estimator/python/estimator/estimator.py:1112) ]]
+
+Caused by op u'OutfeedDequeueTuple_4', defined at:
+  File "/home/shengyushen_gmail_com/.local/bin/t2t-trainer", line 33, in <module>
+    tf.app.run()
+  File "/usr/local/lib/python2.7/dist-packages/tensorflow/python/platform/app.py", line 125, in run
+    _sys.exit(main(argv))
+  File "/home/shengyushen_gmail_com/.local/bin/t2t-trainer", line 28, in main
+    t2t_trainer.main(argv)
+  File "/home/shengyushen_gmail_com/.local/lib/python2.7/site-packages/tensor2tensor/bin/t2t_trainer.py", line 400, in main
+    execute_schedule(exp)
+  File "/home/shengyushen_gmail_com/.local/lib/python2.7/site-packages/tensor2tensor/bin/t2t_trainer.py", line 356, in execute_schedule
+    getattr(exp, FLAGS.schedule)()
+  File "/home/shengyushen_gmail_com/.local/lib/python2.7/site-packages/tensor2tensor/utils/trainer_lib.py", line 404, in continuous_train_and_eval
+    return self.evaluate()
+  File "/home/shengyushen_gmail_com/.local/lib/python2.7/site-packages/tensor2tensor/utils/trainer_lib.py", line 479, in evaluate
+    name=name)
+  File "/usr/local/lib/python2.7/dist-packages/tensorflow/contrib/tpu/python/tpu/tpu_estimator.py", line 2473, in evaluate
+    name=name)
+  File "/usr/local/lib/python2.7/dist-packages/tensorflow_estimator/python/estimator/estimator.py", line 469, in evaluate
+    name=name)
+  File "/usr/local/lib/python2.7/dist-packages/tensorflow_estimator/python/estimator/estimator.py", line 511, in _actual_eval
+    return _evaluate()
+  File "/usr/local/lib/python2.7/dist-packages/tensorflow_estimator/python/estimator/estimator.py", line 493, in _evaluate
+    self._evaluate_build_graph(input_fn, hooks, checkpoint_path))
+  File "/usr/local/lib/python2.7/dist-packages/tensorflow_estimator/python/estimator/estimator.py", line 1424, in _evaluate_build_graph
+    self._call_model_fn_eval(input_fn, self.config))
+  File "/usr/local/lib/python2.7/dist-packages/tensorflow_estimator/python/estimator/estimator.py", line 1460, in _call_model_fn_eval
+    features, labels, model_fn_lib.ModeKeys.EVAL, config)
+  File "/usr/local/lib/python2.7/dist-packages/tensorflow/contrib/tpu/python/tpu/tpu_estimator.py", line 2251, in _call_model_fn
+    config)
+  File "/usr/local/lib/python2.7/dist-packages/tensorflow_estimator/python/estimator/estimator.py", line 1112, in _call_model_fn
+    model_fn_results = self._model_fn(features=features, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/tensorflow/contrib/tpu/python/tpu/tpu_estimator.py", line 2665, in _model_fn
+    host_call_ret = host_calls.create_tpu_hostcall()
+  File "/usr/local/lib/python2.7/dist-packages/tensorflow/contrib/tpu/python/tpu/tpu_estimator.py", line 1757, in create_tpu_hostcall
+    device_ordinal=ordinal_id)
+  File "/usr/local/lib/python2.7/dist-packages/tensorflow/contrib/tpu/ops/gen_tpu_ops.py", line 3952, in outfeed_dequeue_tuple
+    device_ordinal=device_ordinal, name=name)
+  File "/usr/local/lib/python2.7/dist-packages/tensorflow/python/framework/op_def_library.py", line 788, in _apply_op_helper
+    op_def=op_def)
+  File "/usr/local/lib/python2.7/dist-packages/tensorflow/python/util/deprecation.py", line 507, in new_func
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/tensorflow/python/framework/ops.py", line 3300, in create_op
+    op_def=op_def)
+  File "/usr/local/lib/python2.7/dist-packages/tensorflow/python/framework/ops.py", line 1801, in __init__
+    self._traceback = tf_stack.extract_stack()
+
+UnavailableError (see above for traceback): Bad hardware status: 0x1
+	 [[node OutfeedDequeueTuple_4 (defined at /usr/local/lib/python2.7/dist-packages/tensorflow_estimator/python/estimator/estimator.py:1112) ]]
+
+INFO:tensorflow:Error recorded from evaluation_loop: Combined status information from 9 operations:
+
+Status code: Resource exhausted [9x]
+  Compilation failure: Ran out of memory in memory space hbm. Used 13.70G of 8.00G hbm. Exceeded hbm capacity by 5.70G.
+  
+  Total hbm usage >= 13.70G:
+      reserved        528.00M 
+      program          13.18G 
+      arguments       unknown size 
+  
+  Output size unknown.
+  
+  Program hbm requirement 13.18G:
+      reserved          12.0K
+      HLO temp         13.18G (68.8% utilization, 0.0% fragmentation (741.0K))
+  
+    Largest program allocations in hbm:
+  
+    1. Size: 8.16G
+       Operator: op_type="ExpandDims" op_name="ExpandDims_1"
+       Shape: f32[128,256,1,1,33408]{4,3,2,1,0}
+       Unpadded size: 4.08G
+       Extra memory due to padding: 4.08G (2.0x expansion)
+       XLA label: %reshape.2599 = f32[128,256,1,1,33408]{4,3,2,1,0} reshape(f32[128,256,33408]{2,1,0} %cross-replica-sum.3), metadata={op_type="ExpandDims" op_name="ExpandDims_1"}
+       Allocation type: HLO temp
+       ==========================
+  
+    2. Size: 4.08G
+       Operator: op_type="CrossReplicaSum" op_name="reshape/CrossReplicaSum"
+       Shape: f32[128,256,33408]{2,1,0}
+       Unpadded size: 4.08G
+       XLA label: %cross-replica-sum.3 = f32[128,256,33408]{2,1,0} cross-replica-sum(f32[128,256,33408]{2,1,0} %bitcast.212), replica_groups={{0,1,2,3,4,5,6,7}}, barrier="custom:0", to_apply=%sum.307, metadata={op_type="CrossReplicaSum" op_name="reshape/CrossReplicaSum"}
+       Allocation type: HLO temp
+       ==========================
+  
+    3. Size: 144.00M
+       Shape: bf16[18,4,8,1024,128]{4,3,2,1,0}
+       Unpadded size: 144.00M
+       XLA label: %while.1 = (s32[], f32[], s32[], s32[], bf16[19,1024]{1,0}, bf16[256,1024]{1,0}, bf16[13,1024]{1,0}, bf16[2,33408,1024]{2,1,0}, bf16[18,4,8,1024,128]{4,3,2,1,0}, bf16[12,1024,4096]{2,1,0}, bf16[12,4096,1024]{2,1,0}, token[], pred[], pred[], s32[], s32[], s...
+       Allocation type: HLO temp
+       ==========================
+  
+    4. Size: 144.00M
+       Shape: bf16[18,4,8,1024,128]{4,3,2,1,0}
+       Unpadded size: 144.00M
+       XLA label: %wide_param.3 = (s32[], f32[], s32[], s32[], bf...
+(0 successful operations.)
+INFO:tensorflow:evaluation_loop marked as finished
+WARNING:tensorflow:Reraising captured error
+Traceback (most recent call last):
+  File "/home/shengyushen_gmail_com/.local/bin/t2t-trainer", line 33, in <module>
+    tf.app.run()
+  File "/usr/local/lib/python2.7/dist-packages/tensorflow/python/platform/app.py", line 125, in run
+    _sys.exit(main(argv))
+  File "/home/shengyushen_gmail_com/.local/bin/t2t-trainer", line 28, in main
+    t2t_trainer.main(argv)
+  File "/home/shengyushen_gmail_com/.local/lib/python2.7/site-packages/tensor2tensor/bin/t2t_trainer.py", line 400, in main
+    execute_schedule(exp)
+  File "/home/shengyushen_gmail_com/.local/lib/python2.7/site-packages/tensor2tensor/bin/t2t_trainer.py", line 356, in execute_schedule
+    getattr(exp, FLAGS.schedule)()
+  File "/home/shengyushen_gmail_com/.local/lib/python2.7/site-packages/tensor2tensor/utils/trainer_lib.py", line 404, in continuous_train_and_eval
+    return self.evaluate()
+  File "/home/shengyushen_gmail_com/.local/lib/python2.7/site-packages/tensor2tensor/utils/trainer_lib.py", line 479, in evaluate
+    name=name)
+  File "/usr/local/lib/python2.7/dist-packages/tensorflow/contrib/tpu/python/tpu/tpu_estimator.py", line 2478, in evaluate
+    rendezvous.raise_errors()
+  File "/usr/local/lib/python2.7/dist-packages/tensorflow/contrib/tpu/python/tpu/error_handling.py", line 128, in raise_errors
+    six.reraise(typ, value, traceback)
+  File "/usr/local/lib/python2.7/dist-packages/tensorflow/contrib/tpu/python/tpu/tpu_estimator.py", line 2473, in evaluate
+    name=name)
+  File "/usr/local/lib/python2.7/dist-packages/tensorflow_estimator/python/estimator/estimator.py", line 469, in evaluate
+    name=name)
+  File "/usr/local/lib/python2.7/dist-packages/tensorflow_estimator/python/estimator/estimator.py", line 511, in _actual_eval
+    return _evaluate()
+  File "/usr/local/lib/python2.7/dist-packages/tensorflow_estimator/python/estimator/estimator.py", line 500, in _evaluate
+    output_dir=self.eval_dir(name))
+  File "/usr/local/lib/python2.7/dist-packages/tensorflow_estimator/python/estimator/estimator.py", line 1537, in _evaluate_run
+    config=self._session_config)
+  File "/usr/local/lib/python2.7/dist-packages/tensorflow/python/training/evaluation.py", line 274, in _evaluate_once
+    session.run(eval_ops, feed_dict)
+  File "/usr/local/lib/python2.7/dist-packages/tensorflow/python/training/monitored_session.py", line 676, in run
+    run_metadata=run_metadata)
+  File "/usr/local/lib/python2.7/dist-packages/tensorflow/python/training/monitored_session.py", line 1171, in run
+    run_metadata=run_metadata)
+  File "/usr/local/lib/python2.7/dist-packages/tensorflow/python/training/monitored_session.py", line 1270, in run
+    raise six.reraise(*original_exc_info)
+  File "/usr/local/lib/python2.7/dist-packages/tensorflow/python/training/monitored_session.py", line 1255, in run
+    return self._sess.run(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/tensorflow/python/training/monitored_session.py", line 1327, in run
+    run_metadata=run_metadata)
+  File "/usr/local/lib/python2.7/dist-packages/tensorflow/python/training/monitored_session.py", line 1091, in run
+    return self._sess.run(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/tensorflow/python/client/session.py", line 929, in run
+    run_metadata_ptr)
+  File "/usr/local/lib/python2.7/dist-packages/tensorflow/python/client/session.py", line 1152, in _run
+    feed_dict_tensor, options, run_metadata)
+  File "/usr/local/lib/python2.7/dist-packages/tensorflow/python/client/session.py", line 1328, in _do_run
+    run_metadata)
+  File "/usr/local/lib/python2.7/dist-packages/tensorflow/python/client/session.py", line 1348, in _do_call
+    raise type(e)(node_def, op, message)
+tensorflow.python.framework.errors_impl.ResourceExhaustedError: Combined status information from 9 operations:
+
+Status code: Resource exhausted [9x]
+  Compilation failure: Ran out of memory in memory space hbm. Used 13.70G of 8.00G hbm. Exceeded hbm capacity by 5.70G.
+  
+  Total hbm usage >= 13.70G:
+      reserved        528.00M 
+      program          13.18G 
+      arguments       unknown size 
+  
+  Output size unknown.
+  
+  Program hbm requirement 13.18G:
+      reserved          12.0K
+      HLO temp         13.18G (68.8% utilization, 0.0% fragmentation (741.0K))
+  
+    Largest program allocations in hbm:
+  
+    1. Size: 8.16G
+       Operator: op_type="ExpandDims" op_name="ExpandDims_1"
+       Shape: f32[128,256,1,1,33408]{4,3,2,1,0}
+       Unpadded size: 4.08G
+       Extra memory due to padding: 4.08G (2.0x expansion)
+       XLA label: %reshape.2599 = f32[128,256,1,1,33408]{4,3,2,1,0} reshape(f32[128,256,33408]{2,1,0} %cross-replica-sum.3), metadata={op_type="ExpandDims" op_name="ExpandDims_1"}
+       Allocation type: HLO temp
+       ==========================
+  
+    2. Size: 4.08G
+       Operator: op_type="CrossReplicaSum" op_name="reshape/CrossReplicaSum"
+       Shape: f32[128,256,33408]{2,1,0}
+       Unpadded size: 4.08G
+       XLA label: %cross-replica-sum.3 = f32[128,256,33408]{2,1,0} cross-replica-sum(f32[128,256,33408]{2,1,0} %bitcast.212), replica_groups={{0,1,2,3,4,5,6,7}}, barrier="custom:0", to_apply=%sum.307, metadata={op_type="CrossReplicaSum" op_name="reshape/CrossReplicaSum"}
+       Allocation type: HLO temp
+       ==========================
+  
+    3. Size: 144.00M
+       Shape: bf16[18,4,8,1024,128]{4,3,2,1,0}
+       Unpadded size: 144.00M
+       XLA label: %while.1 = (s32[], f32[], s32[], s32[], bf16[19,1024]{1,0}, bf16[256,1024]{1,0}, bf16[13,1024]{1,0}, bf16[2,33408,1024]{2,1,0}, bf16[18,4,8,1024,128]{4,3,2,1,0}, bf16[12,1024,4096]{2,1,0}, bf16[12,4096,1024]{2,1,0}, token[], pred[], pred[], s32[], s32[], s...
+       Allocation type: HLO temp
+       ==========================
+  
+    4. Size: 144.00M
+       Shape: bf16[18,4,8,1024,128]{4,3,2,1,0}
+       Unpadded size: 144.00M
+       XLA label: %wide_param.3 = (s32[], f32[], s32[], s32[], bf...
+(0 successful operations.)
