@@ -1,0 +1,20 @@
+WARNING:tensorflow:Not all hyperparameter sets work on TPU. Prefer hparams_sets with a '_tpu' suffix, e.g. transformer_tpu, if available for your model.
+INFO:tensorflow:Overriding hparams in mtf_transformer_paper_tr_0_mesh_8 with mesh_shape=batch:32,num_replicas=32
+Traceback (most recent call last):
+  File "/home/shengyushen_gmail_com/.local/bin/t2t-trainer", line 33, in <module>
+    tf.app.run()
+  File "/home/shengyushen_gmail_com/.local/lib/python2.7/site-packages/tensorflow/python/platform/app.py", line 125, in run
+    _sys.exit(main(argv))
+  File "/home/shengyushen_gmail_com/.local/bin/t2t-trainer", line 28, in main
+    t2t_trainer.main(argv)
+  File "/home/shengyushen_gmail_com/.local/lib/python2.7/site-packages/tensor2tensor/bin/t2t_trainer.py", line 376, in main
+    hparams = create_hparams()
+  File "/home/shengyushen_gmail_com/.local/lib/python2.7/site-packages/tensor2tensor/bin/t2t_trainer.py", line 173, in create_hparams
+    hparams_path=hparams_path)
+  File "/home/shengyushen_gmail_com/.local/lib/python2.7/site-packages/tensor2tensor/utils/hparams_lib.py", line 56, in create_hparams
+    hparams = hparams.parse(hparams_overrides_str)
+  File "/home/shengyushen_gmail_com/.local/lib/python2.7/site-packages/tensor2tensor/utils/hparam.py", line 503, in parse
+    values_map = parse_values(values, type_map)
+  File "/home/shengyushen_gmail_com/.local/lib/python2.7/site-packages/tensor2tensor/utils/hparam.py", line 264, in parse_values
+    raise ValueError('Unknown hyperparameter type for %s' % name)
+ValueError: Unknown hyperparameter type for num_replicas
