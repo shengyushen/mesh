@@ -98,36 +98,36 @@ WARNING:tensorflow:Reraising captured error
 Traceback (most recent call last):
   File "/home/shengyushen_gmail_com/.local/bin/t2t-trainer", line 33, in <module>
     tf.app.run()
-  File "/home/shengyushen_gmail_com/.local/lib/python2.7/site-packages/tensorflow/python/platform/app.py", line 125, in run
+  File "/usr/local/lib/python2.7/dist-packages/tensorflow/python/platform/app.py", line 125, in run
     _sys.exit(main(argv))
   File "/home/shengyushen_gmail_com/.local/bin/t2t-trainer", line 28, in main
     t2t_trainer.main(argv)
-  File "/home/shengyushen_gmail_com/.local/lib/python2.7/site-packages/tensor2tensor/bin/t2t_trainer.py", line 401, in main
+  File "/usr/local/lib/python2.7/dist-packages/tensor2tensor/bin/t2t_trainer.py", line 401, in main
     execute_schedule(exp)
-  File "/home/shengyushen_gmail_com/.local/lib/python2.7/site-packages/tensor2tensor/bin/t2t_trainer.py", line 356, in execute_schedule
+  File "/usr/local/lib/python2.7/dist-packages/tensor2tensor/bin/t2t_trainer.py", line 356, in execute_schedule
     getattr(exp, FLAGS.schedule)()
-  File "/home/shengyushen_gmail_com/.local/lib/python2.7/site-packages/tensor2tensor/utils/trainer_lib.py", line 401, in continuous_train_and_eval
+  File "/usr/local/lib/python2.7/dist-packages/tensor2tensor/utils/trainer_lib.py", line 401, in continuous_train_and_eval
     self._eval_spec)
-  File "/home/shengyushen_gmail_com/.local/lib/python2.7/site-packages/tensorflow_estimator/python/estimator/training.py", line 471, in train_and_evaluate
+  File "/usr/local/lib/python2.7/dist-packages/tensorflow_estimator/python/estimator/training.py", line 471, in train_and_evaluate
     return executor.run()
-  File "/home/shengyushen_gmail_com/.local/lib/python2.7/site-packages/tensorflow_estimator/python/estimator/training.py", line 638, in run
+  File "/usr/local/lib/python2.7/dist-packages/tensorflow_estimator/python/estimator/training.py", line 638, in run
     getattr(self, task_to_run)()
-  File "/home/shengyushen_gmail_com/.local/lib/python2.7/site-packages/tensorflow_estimator/python/estimator/training.py", line 648, in run_worker
+  File "/usr/local/lib/python2.7/dist-packages/tensorflow_estimator/python/estimator/training.py", line 648, in run_worker
     return self._start_distributed_training()
-  File "/home/shengyushen_gmail_com/.local/lib/python2.7/site-packages/tensorflow_estimator/python/estimator/training.py", line 789, in _start_distributed_training
+  File "/usr/local/lib/python2.7/dist-packages/tensorflow_estimator/python/estimator/training.py", line 789, in _start_distributed_training
     saving_listeners=saving_listeners)
-  File "/home/shengyushen_gmail_com/.local/lib/python2.7/site-packages/tensorflow/contrib/tpu/python/tpu/tpu_estimator.py", line 2457, in train
+  File "/usr/local/lib/python2.7/dist-packages/tensorflow/contrib/tpu/python/tpu/tpu_estimator.py", line 2457, in train
     rendezvous.raise_errors()
-  File "/home/shengyushen_gmail_com/.local/lib/python2.7/site-packages/tensorflow/contrib/tpu/python/tpu/error_handling.py", line 128, in raise_errors
+  File "/usr/local/lib/python2.7/dist-packages/tensorflow/contrib/tpu/python/tpu/error_handling.py", line 128, in raise_errors
     six.reraise(typ, value, traceback)
-  File "/home/shengyushen_gmail_com/.local/lib/python2.7/site-packages/tensorflow/contrib/tpu/python/tpu/tpu_estimator.py", line 2452, in train
+  File "/usr/local/lib/python2.7/dist-packages/tensorflow/contrib/tpu/python/tpu/tpu_estimator.py", line 2452, in train
     saving_listeners=saving_listeners)
-  File "/home/shengyushen_gmail_com/.local/lib/python2.7/site-packages/tensorflow_estimator/python/estimator/estimator.py", line 355, in train
+  File "/usr/local/lib/python2.7/dist-packages/tensorflow_estimator/python/estimator/estimator.py", line 355, in train
     hooks.extend(self._convert_train_steps_to_hooks(steps, max_steps))
-  File "/home/shengyushen_gmail_com/.local/lib/python2.7/site-packages/tensorflow/contrib/tpu/python/tpu/tpu_estimator.py", line 2328, in _convert_train_steps_to_hooks
+  File "/usr/local/lib/python2.7/dist-packages/tensorflow/contrib/tpu/python/tpu/tpu_estimator.py", line 2328, in _convert_train_steps_to_hooks
     if ctx.is_running_on_cpu():
-  File "/home/shengyushen_gmail_com/.local/lib/python2.7/site-packages/tensorflow/contrib/tpu/python/tpu/tpu_context.py", line 400, in is_running_on_cpu
+  File "/usr/local/lib/python2.7/dist-packages/tensorflow/contrib/tpu/python/tpu/tpu_context.py", line 400, in is_running_on_cpu
     self._validate_tpu_configuration()
-  File "/home/shengyushen_gmail_com/.local/lib/python2.7/site-packages/tensorflow/contrib/tpu/python/tpu/tpu_context.py", line 602, in _validate_tpu_configuration
+  File "/usr/local/lib/python2.7/dist-packages/tensorflow/contrib/tpu/python/tpu/tpu_context.py", line 602, in _validate_tpu_configuration
     raise ValueError(message)
 ValueError: TPUConfig.num_shards is not set correctly. According to TPU system metadata for Tensorflow master (grpc://10.240.1.5:8470): num_replicas should be (32), got (8). For non-model-parallelism, num_replicas should be the total num of TPU cores in the system. For model-parallelism, the total number of TPU cores should be num_cores_per_replica * num_replicas. Please set it accordingly or leave it as `None`
