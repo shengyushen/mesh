@@ -1,0 +1,133 @@
+WARNING:tensorflow:Not all hyperparameter sets work on TPU. Prefer hparams_sets with a '_tpu' suffix, e.g. transformer_tpu, if available for your model.
+WARNING:tensorflow:Estimator's model_fn (<function wrapping_model_fn at 0x7f0fca9d47d0>) includes params argument, but params are not passed to Estimator.
+INFO:tensorflow:Using config: {'_save_checkpoints_secs': None, '_num_ps_replicas': 0, '_keep_checkpoint_max': 20, '_task_type': 'worker', '_global_id_in_cluster': 0, '_is_chief': True, '_tpu_config': TPUConfig(iterations_per_loop=100, num_shards=8, num_cores_per_replica=1, per_host_input_for_training=4, tpu_job_name=None, initial_infeed_sleep_secs=None, input_partition_dims=None), '_cluster_spec': <tensorflow.python.training.server_lib.ClusterSpec object at 0x7f0fca776210>, '_model_dir': 'gs://ssystore1/anothertransformer2019-05-07-03:20:50/out', '_protocol': None, '_save_checkpoints_steps': None, '_keep_checkpoint_every_n_hours': 10000, '_service': None, '_session_config': gpu_options {
+  per_process_gpu_memory_fraction: 0.95
+}
+allow_soft_placement: true
+graph_options {
+}
+cluster_def {
+  job {
+    name: "worker"
+    tasks {
+      key: 0
+      value: "10.240.1.5:8470"
+    }
+    tasks {
+      key: 1
+      value: "10.240.1.2:8470"
+    }
+    tasks {
+      key: 2
+      value: "10.240.1.4:8470"
+    }
+    tasks {
+      key: 3
+      value: "10.240.1.3:8470"
+    }
+  }
+}
+isolate_session_state: true
+, 'use_tpu': True, '_tf_random_seed': None, '_save_summary_steps': 100, '_device_fn': None, '_cluster': <tensorflow.python.distribute.cluster_resolver.tpu_cluster_resolver.TPUClusterResolver object at 0x7f0fcb0bf590>, '_experimental_distribute': None, '_num_worker_replicas': 1, '_task_id': 0, '_log_step_count_steps': None, '_evaluation_master': u'grpc://10.240.1.5:8470', '_eval_distribute': None, '_train_distribute': None, '_master': u'grpc://10.240.1.5:8470'}
+INFO:tensorflow:_TPUContext: eval_on_tpu True
+WARNING:tensorflow:ValidationMonitor only works with --schedule=train_and_evaluate
+INFO:tensorflow:Not using Distribute Coordinator.
+WARNING:tensorflow:TF_CONFIG should not be empty in distributed environment.
+INFO:tensorflow:Start Tensorflow server.
+2019-05-07 03:21:28.987422: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2019-05-07 03:21:29.493812: I tensorflow/core/platform/profile_utils/cpu_utils.cc:94] CPU Frequency: 2300000000 Hz
+2019-05-07 03:21:29.528060: I tensorflow/compiler/xla/service/service.cc:150] XLA service 0x558cde4a01f0 executing computations on platform Host. Devices:
+2019-05-07 03:21:29.528141: I tensorflow/compiler/xla/service/service.cc:158]   StreamExecutor device (0): <undefined>, <undefined>
+2019-05-07 03:21:29.740158: I tensorflow/core/distributed_runtime/rpc/grpc_channel.cc:252] Initialize GrpcChannelCache for job worker -> {0 -> localhost:8470, 1 -> 10.240.1.2:8470, 2 -> 10.240.1.4:8470, 3 -> 10.240.1.3:8470}
+2019-05-07 03:21:29.763468: I tensorflow/core/distributed_runtime/rpc/grpc_server_lib.cc:391] Started server with target: grpc://localhost:8470
+INFO:tensorflow:Waiting 5 secs before starting training.
+INFO:tensorflow:Querying Tensorflow master (grpc://10.240.1.5:8470) for TPU system metadata.
+2019-05-07 03:21:34.933484: W tensorflow/core/distributed_runtime/rpc/grpc_session.cc:354] GrpcSession::ListDevices will initialize the session with an empty graph and other defaults because the session has not yet been created.
+INFO:tensorflow:Initializing TPU system (master: grpc://10.240.1.5:8470) to fetch topology for model parallelism. This might take a while.
+INFO:tensorflow:Found TPU system:
+INFO:tensorflow:*** Num TPU Cores: 32
+INFO:tensorflow:*** Num TPU Workers: 4
+INFO:tensorflow:*** Num TPU Cores Per Worker: 8
+INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:CPU:0, CPU, -1, 3721831442400259388)
+INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:XLA_CPU:0, XLA_CPU, 17179869184, 5941376222178610171)
+INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:TPU:0, TPU, 17179869184, 14890056088461063960)
+INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:TPU:1, TPU, 17179869184, 13776371844818967202)
+INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:TPU:2, TPU, 17179869184, 4460076397208794791)
+INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:TPU:3, TPU, 17179869184, 8143404640641291018)
+INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:TPU:4, TPU, 17179869184, 15174512111761055655)
+INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:TPU:5, TPU, 17179869184, 2677866082488089556)
+INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:TPU:6, TPU, 17179869184, 17471374052255044232)
+INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:TPU:7, TPU, 17179869184, 1483207703132779131)
+INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:TPU_SYSTEM:0, TPU_SYSTEM, 17179869184, 4489064114088528936)
+INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:2/device:CPU:0, CPU, -1, 16396675114184990618)
+INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:2/device:XLA_CPU:0, XLA_CPU, 17179869184, 1046511212185835340)
+INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:2/device:TPU:0, TPU, 17179869184, 10092222350110317582)
+INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:2/device:TPU:1, TPU, 17179869184, 7079120795972991721)
+INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:2/device:TPU:2, TPU, 17179869184, 2138654157728782915)
+INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:2/device:TPU:3, TPU, 17179869184, 1057107236869850262)
+INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:2/device:TPU:4, TPU, 17179869184, 7864311868942997869)
+INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:2/device:TPU:5, TPU, 17179869184, 13928863059946914301)
+INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:2/device:TPU:6, TPU, 17179869184, 14297771770267774315)
+INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:2/device:TPU:7, TPU, 17179869184, 2019835534798935682)
+INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:2/device:TPU_SYSTEM:0, TPU_SYSTEM, 17179869184, 11001683746147799684)
+INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:1/device:CPU:0, CPU, -1, 544480792557097795)
+INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:1/device:XLA_CPU:0, XLA_CPU, 17179869184, 1314319661825294044)
+INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:1/device:TPU:0, TPU, 17179869184, 6842015164043496327)
+INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:1/device:TPU:1, TPU, 17179869184, 1791195718939512544)
+INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:1/device:TPU:2, TPU, 17179869184, 1046364127139462501)
+INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:1/device:TPU:3, TPU, 17179869184, 15196316868168798682)
+INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:1/device:TPU:4, TPU, 17179869184, 13237822857046768232)
+INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:1/device:TPU:5, TPU, 17179869184, 11336666360152822917)
+INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:1/device:TPU:6, TPU, 17179869184, 9022064541399493870)
+INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:1/device:TPU:7, TPU, 17179869184, 4904057895624876701)
+INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:1/device:TPU_SYSTEM:0, TPU_SYSTEM, 17179869184, 18336668976035081843)
+INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:3/device:CPU:0, CPU, -1, 6396752457903016104)
+INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:3/device:XLA_CPU:0, XLA_CPU, 17179869184, 16035939924877722473)
+INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:3/device:TPU:0, TPU, 17179869184, 5511682483282230468)
+INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:3/device:TPU:1, TPU, 17179869184, 14560805527744112453)
+INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:3/device:TPU:2, TPU, 17179869184, 3152626694101473811)
+INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:3/device:TPU:3, TPU, 17179869184, 10074737039163674873)
+INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:3/device:TPU:4, TPU, 17179869184, 15195909236583327897)
+INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:3/device:TPU:5, TPU, 17179869184, 7922806012863457247)
+INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:3/device:TPU:6, TPU, 17179869184, 18422610288323371558)
+INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:3/device:TPU:7, TPU, 17179869184, 17060871926734557372)
+INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:3/device:TPU_SYSTEM:0, TPU_SYSTEM, 17179869184, 9637290840784854401)
+INFO:tensorflow:Error recorded from training_loop: TPUConfig.num_shards is not set correctly. According to TPU system metadata for Tensorflow master (grpc://10.240.1.5:8470): num_replicas should be (32), got (8). For non-model-parallelism, num_replicas should be the total num of TPU cores in the system. For model-parallelism, the total number of TPU cores should be num_cores_per_replica * num_replicas. Please set it accordingly or leave it as `None`
+INFO:tensorflow:training_loop marked as finished
+WARNING:tensorflow:Reraising captured error
+Traceback (most recent call last):
+  File "/home/shengyushen_gmail_com/.local/bin/t2t-trainer", line 33, in <module>
+    tf.app.run()
+  File "/home/shengyushen_gmail_com/.local/lib/python2.7/site-packages/tensorflow/python/platform/app.py", line 125, in run
+    _sys.exit(main(argv))
+  File "/home/shengyushen_gmail_com/.local/bin/t2t-trainer", line 28, in main
+    t2t_trainer.main(argv)
+  File "/home/shengyushen_gmail_com/.local/lib/python2.7/site-packages/tensor2tensor/bin/t2t_trainer.py", line 401, in main
+    execute_schedule(exp)
+  File "/home/shengyushen_gmail_com/.local/lib/python2.7/site-packages/tensor2tensor/bin/t2t_trainer.py", line 356, in execute_schedule
+    getattr(exp, FLAGS.schedule)()
+  File "/home/shengyushen_gmail_com/.local/lib/python2.7/site-packages/tensor2tensor/utils/trainer_lib.py", line 401, in continuous_train_and_eval
+    self._eval_spec)
+  File "/home/shengyushen_gmail_com/.local/lib/python2.7/site-packages/tensorflow_estimator/python/estimator/training.py", line 471, in train_and_evaluate
+    return executor.run()
+  File "/home/shengyushen_gmail_com/.local/lib/python2.7/site-packages/tensorflow_estimator/python/estimator/training.py", line 638, in run
+    getattr(self, task_to_run)()
+  File "/home/shengyushen_gmail_com/.local/lib/python2.7/site-packages/tensorflow_estimator/python/estimator/training.py", line 648, in run_worker
+    return self._start_distributed_training()
+  File "/home/shengyushen_gmail_com/.local/lib/python2.7/site-packages/tensorflow_estimator/python/estimator/training.py", line 789, in _start_distributed_training
+    saving_listeners=saving_listeners)
+  File "/home/shengyushen_gmail_com/.local/lib/python2.7/site-packages/tensorflow/contrib/tpu/python/tpu/tpu_estimator.py", line 2457, in train
+    rendezvous.raise_errors()
+  File "/home/shengyushen_gmail_com/.local/lib/python2.7/site-packages/tensorflow/contrib/tpu/python/tpu/error_handling.py", line 128, in raise_errors
+    six.reraise(typ, value, traceback)
+  File "/home/shengyushen_gmail_com/.local/lib/python2.7/site-packages/tensorflow/contrib/tpu/python/tpu/tpu_estimator.py", line 2452, in train
+    saving_listeners=saving_listeners)
+  File "/home/shengyushen_gmail_com/.local/lib/python2.7/site-packages/tensorflow_estimator/python/estimator/estimator.py", line 355, in train
+    hooks.extend(self._convert_train_steps_to_hooks(steps, max_steps))
+  File "/home/shengyushen_gmail_com/.local/lib/python2.7/site-packages/tensorflow/contrib/tpu/python/tpu/tpu_estimator.py", line 2328, in _convert_train_steps_to_hooks
+    if ctx.is_running_on_cpu():
+  File "/home/shengyushen_gmail_com/.local/lib/python2.7/site-packages/tensorflow/contrib/tpu/python/tpu/tpu_context.py", line 400, in is_running_on_cpu
+    self._validate_tpu_configuration()
+  File "/home/shengyushen_gmail_com/.local/lib/python2.7/site-packages/tensorflow/contrib/tpu/python/tpu/tpu_context.py", line 602, in _validate_tpu_configuration
+    raise ValueError(message)
+ValueError: TPUConfig.num_shards is not set correctly. According to TPU system metadata for Tensorflow master (grpc://10.240.1.5:8470): num_replicas should be (32), got (8). For non-model-parallelism, num_replicas should be the total num of TPU cores in the system. For model-parallelism, the total number of TPU cores should be num_cores_per_replica * num_replicas. Please set it accordingly or leave it as `None`
