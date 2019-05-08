@@ -12,6 +12,7 @@ TPU_NAME=ssy-mtf-ctpu
 #gsutil rm -r ${OUT_DIR}
 
 # distributed tpu always use  --schedule=train, because eval can not run in distributed tpu
+# https://tensorflow.github.io/tensor2tensor/distributed_training.html
 /home/shengyushen_gmail_com/.local/bin/t2t-trainer \
   --model=$MODEL \
   --hparams_set=$CONF \
