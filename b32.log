@@ -38,10 +38,10 @@ Traceback (most recent call last):
     _sys.exit(main(argv))
   File "/home/shengyushen_gmail_com/.local/bin/t2t-trainer", line 28, in main
     t2t_trainer.main(argv)
-  File "/home/shengyushen_gmail_com/.local/lib/python2.7/site-packages/tensor2tensor/bin/t2t_trainer.py", line 398, in main
+  File "/home/shengyushen/.local/lib/python2.7/site-packages/tensor2tensor/bin/t2t_trainer.py", line 398, in main
     exp = exp_fn(create_run_config(hparams), hparams)
-  File "/home/shengyushen_gmail_com/.local/lib/python2.7/site-packages/tensor2tensor/utils/trainer_lib.py", line 774, in experiment_fn
+  File "/home/shengyushen/.local/lib/python2.7/site-packages/tensor2tensor/utils/trainer_lib.py", line 774, in experiment_fn
     return create_experiment(run_config, hparams, *args, **kwargs)
-  File "/home/shengyushen_gmail_com/.local/lib/python2.7/site-packages/tensor2tensor/utils/trainer_lib.py", line 720, in create_experiment
+  File "/home/shengyushen/.local/lib/python2.7/site-packages/tensor2tensor/utils/trainer_lib.py", line 720, in create_experiment
     raise ValueError("Eval is not currently supported on a TPU Pod")
 ValueError: Eval is not currently supported on a TPU Pod
