@@ -1,6 +1,6 @@
 t=$(date +"%Y-%m-%d-%H:%M:%S")
 
-CONF=mtf_transformer_paper_tr_0_mesh_8
+CONF=mtf_transformer_paper_tr_0_m4_b8
 NAME=ende_$CONF\_0828
 MODEL=mtf_transformer
 PROBLEM=translate_ende_wmt32k_packed
