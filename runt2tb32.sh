@@ -1,6 +1,8 @@
 t=$(date +"%Y-%m-%d-%H:%M:%S")
 
-CONF=mtf_transformer_paper_tr_0_mesh_8
+#CONF=mtf_transformer_paper_tr_0_mesh_8
+# this directly use batch 32
+CONF=mtf_transformer_paper_tr_0
 NAME=ende_$CONF\_0828
 MODEL=mtf_transformer
 PROBLEM=translate_ende_wmt32k_packed
@@ -16,7 +18,6 @@ TPU_NAME=ssy-mtf-ctpu
 /home/shengyushen_gmail_com/.local/bin/t2t-trainer \
   --model=$MODEL \
   --hparams_set=$CONF \
-  --hparams='mesh_shape="batch:32"' \
   --schedule=train \
   --tpu_num_shards=32 \
   --problem=$PROBLEM \
@@ -28,3 +29,4 @@ TPU_NAME=ssy-mtf-ctpu
   --cloud_tpu_name=$TPU_NAME
 
 
+#  --hparams='mesh_shape="batch:32"' \

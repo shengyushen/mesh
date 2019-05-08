@@ -88,11 +88,11 @@ Colocations handled automatically by placer.
 INFO:tensorflow:Calling model_fn.
 INFO:tensorflow:Reading data files from gs://ssystore1/transformer/data/translate_ende_wmt32k_packed-train*
 INFO:tensorflow:partition: 0 num_data_files: 100
-WARNING:tensorflow:From /home/shengyushen_gmail_com/.local/lib/python2.7/site-packages/tensor2tensor/utils/data_reader.py:275: tf_record_iterator (from tensorflow.python.lib.io.tf_record) is deprecated and will be removed in a future version.
+WARNING:tensorflow:From /home/shengyushen/.local/lib/python2.7/site-packages/tensor2tensor/utils/data_reader.py:275: tf_record_iterator (from tensorflow.python.lib.io.tf_record) is deprecated and will be removed in a future version.
 Instructions for updating:
 Use eager execution and: 
 `tf.data.TFRecordDataset(path)`
-WARNING:tensorflow:From /home/shengyushen_gmail_com/.local/lib/python2.7/site-packages/tensor2tensor/utils/data_reader.py:37: to_int32 (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+WARNING:tensorflow:From /home/shengyushen/.local/lib/python2.7/site-packages/tensor2tensor/utils/data_reader.py:37: to_int32 (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
 Instructions for updating:
 Use tf.cast instead.
 INFO:tensorflow:num_cores_per_replica: 1
@@ -207,11 +207,11 @@ Traceback (most recent call last):
     _sys.exit(main(argv))
   File "/home/shengyushen_gmail_com/.local/bin/t2t-trainer", line 28, in main
     t2t_trainer.main(argv)
-  File "/home/shengyushen_gmail_com/.local/lib/python2.7/site-packages/tensor2tensor/bin/t2t_trainer.py", line 401, in main
+  File "/home/shengyushen/.local/lib/python2.7/site-packages/tensor2tensor/bin/t2t_trainer.py", line 401, in main
     execute_schedule(exp)
-  File "/home/shengyushen_gmail_com/.local/lib/python2.7/site-packages/tensor2tensor/bin/t2t_trainer.py", line 356, in execute_schedule
+  File "/home/shengyushen/.local/lib/python2.7/site-packages/tensor2tensor/bin/t2t_trainer.py", line 356, in execute_schedule
     getattr(exp, FLAGS.schedule)()
-  File "/home/shengyushen_gmail_com/.local/lib/python2.7/site-packages/tensor2tensor/utils/trainer_lib.py", line 417, in train
+  File "/home/shengyushen/.local/lib/python2.7/site-packages/tensor2tensor/utils/trainer_lib.py", line 417, in train
     max_steps=max_steps or self._train_spec.max_steps)
   File "/home/shengyushen_gmail_com/.local/lib/python2.7/site-packages/tensorflow/contrib/tpu/python/tpu/tpu_estimator.py", line 2457, in train
     rendezvous.raise_errors()
@@ -257,12 +257,12 @@ Traceback (most recent call last):
     self._call_model_fn(features, labels))
   File "/home/shengyushen_gmail_com/.local/lib/python2.7/site-packages/tensorflow/contrib/tpu/python/tpu/tpu_estimator.py", line 1593, in _call_model_fn
     estimator_spec = self._model_fn(features=features, **kwargs)
-  File "/home/shengyushen_gmail_com/.local/lib/python2.7/site-packages/tensor2tensor/utils/t2t_model.py", line 1414, in wrapping_model_fn
+  File "/home/shengyushen/.local/lib/python2.7/site-packages/tensor2tensor/utils/t2t_model.py", line 1414, in wrapping_model_fn
     use_tpu=use_tpu)
-  File "/home/shengyushen_gmail_com/.local/lib/python2.7/site-packages/tensor2tensor/utils/mtf_model.py", line 71, in estimator_model_fn
+  File "/home/shengyushen/.local/lib/python2.7/site-packages/tensor2tensor/utils/mtf_model.py", line 71, in estimator_model_fn
     mesh_shape = mtf.convert_to_shape(hparams.mesh_shape)
-  File "/home/shengyushen_gmail_com/.local/lib/python2.7/site-packages/mesh_tensorflow/ops.py", line 190, in convert_to_shape
+  File "/home/shengyushen/.local/lib/python2.7/site-packages/mesh_tensorflow/ops.py", line 190, in convert_to_shape
     x = _parse_string_to_list_of_pairs(x, seconds_to_int=True)
-  File "/home/shengyushen_gmail_com/.local/lib/python2.7/site-packages/mesh_tensorflow/ops.py", line 4164, in _parse_string_to_list_of_pairs
+  File "/home/shengyushen/.local/lib/python2.7/site-packages/mesh_tensorflow/ops.py", line 4164, in _parse_string_to_list_of_pairs
     ret.append((p[0], int(p[1])))
 ValueError: invalid literal for int() with base 10: '32"'
