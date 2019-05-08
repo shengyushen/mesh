@@ -14,7 +14,7 @@ TPU_NAME=ssy-mtf-ctpu
 /home/shengyushen_gmail_com/.local/bin/t2t-trainer \
   --model=$MODEL \
   --hparams_set=$CONF \
-  --hparams='mesh_shape="batch:4,model:8"' \
+  --schedule=train \
   --tpu_num_shards=32 \
   --problem=$PROBLEM \
   --train_steps=1000 \

@@ -1,1 +1,2 @@
-runt2t.sh is the script I run
+runt2t.sh : batch 8 on tpuv2-8
+runt2tb32.sh : batch 32 on tpuv2-32
