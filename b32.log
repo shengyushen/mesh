@@ -1,7 +1,7 @@
 WARNING:tensorflow:Not all hyperparameter sets work on TPU. Prefer hparams_sets with a '_tpu' suffix, e.g. transformer_tpu, if available for your model.
 INFO:tensorflow:Overriding hparams in mtf_transformer_paper_tr_0_mesh_8 with mesh_shape="batch:32"
-WARNING:tensorflow:Estimator's model_fn (<function wrapping_model_fn at 0x7f51979d87d0>) includes params argument, but params are not passed to Estimator.
-INFO:tensorflow:Using config: {'_save_checkpoints_secs': None, '_num_ps_replicas': 0, '_keep_checkpoint_max': 20, '_task_type': 'worker', '_global_id_in_cluster': 0, '_is_chief': True, '_tpu_config': TPUConfig(iterations_per_loop=100, num_shards=32, num_cores_per_replica=1, per_host_input_for_training=4, tpu_job_name=None, initial_infeed_sleep_secs=None, input_partition_dims=None), '_cluster_spec': <tensorflow.python.training.server_lib.ClusterSpec object at 0x7f5197778210>, '_model_dir': 'gs://ssystore1/anothertransformer2019-05-07-09:20:07/out', '_protocol': None, '_save_checkpoints_steps': None, '_keep_checkpoint_every_n_hours': 10000, '_service': None, '_session_config': gpu_options {
+WARNING:tensorflow:Estimator's model_fn (<function wrapping_model_fn at 0x7f21a7d3f7d0>) includes params argument, but params are not passed to Estimator.
+INFO:tensorflow:Using config: {'_save_checkpoints_secs': None, '_num_ps_replicas': 0, '_keep_checkpoint_max': 20, '_task_type': 'worker', '_global_id_in_cluster': 0, '_is_chief': True, '_tpu_config': TPUConfig(iterations_per_loop=100, num_shards=32, num_cores_per_replica=1, per_host_input_for_training=4, tpu_job_name=None, initial_infeed_sleep_secs=None, input_partition_dims=None), '_cluster_spec': <tensorflow.python.training.server_lib.ClusterSpec object at 0x7f21a7adf210>, '_model_dir': 'gs://ssystore1/anothertransformer2019-05-08-02:59:22/out', '_protocol': None, '_save_checkpoints_steps': None, '_keep_checkpoint_every_n_hours': 10000, '_service': None, '_session_config': gpu_options {
   per_process_gpu_memory_fraction: 0.95
 }
 allow_soft_placement: true
@@ -16,21 +16,190 @@ cluster_def {
     }
     tasks {
       key: 1
-      value: "10.240.1.5:8470"
-    }
-    tasks {
-      key: 2
       value: "10.240.1.2:8470"
     }
     tasks {
-      key: 3
+      key: 2
       value: "10.240.1.3:8470"
+    }
+    tasks {
+      key: 3
+      value: "10.240.1.5:8470"
     }
   }
 }
 isolate_session_state: true
-, 'use_tpu': True, '_tf_random_seed': None, '_save_summary_steps': 100, '_device_fn': None, '_cluster': <tensorflow.python.distribute.cluster_resolver.tpu_cluster_resolver.TPUClusterResolver object at 0x7f51980c2590>, '_experimental_distribute': None, '_num_worker_replicas': 1, '_task_id': 0, '_log_step_count_steps': None, '_evaluation_master': u'grpc://10.240.1.4:8470', '_eval_distribute': None, '_train_distribute': None, '_master': u'grpc://10.240.1.4:8470'}
+, 'use_tpu': True, '_tf_random_seed': None, '_save_summary_steps': 100, '_device_fn': None, '_cluster': <tensorflow.python.distribute.cluster_resolver.tpu_cluster_resolver.TPUClusterResolver object at 0x7f21a8428590>, '_experimental_distribute': None, '_num_worker_replicas': 1, '_task_id': 0, '_log_step_count_steps': None, '_evaluation_master': u'grpc://10.240.1.4:8470', '_eval_distribute': None, '_train_distribute': None, '_master': u'grpc://10.240.1.4:8470'}
 INFO:tensorflow:_TPUContext: eval_on_tpu True
+INFO:tensorflow:Querying Tensorflow master (grpc://10.240.1.4:8470) for TPU system metadata.
+2019-05-08 02:59:57.791204: W tensorflow/core/distributed_runtime/rpc/grpc_session.cc:354] GrpcSession::ListDevices will initialize the session with an empty graph and other defaults because the session has not yet been created.
+INFO:tensorflow:Initializing TPU system (master: grpc://10.240.1.4:8470) to fetch topology for model parallelism. This might take a while.
+INFO:tensorflow:Found TPU system:
+INFO:tensorflow:*** Num TPU Cores: 32
+INFO:tensorflow:*** Num TPU Workers: 4
+INFO:tensorflow:*** Num TPU Cores Per Worker: 8
+INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:CPU:0, CPU, -1, 16160541275549697557)
+INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:XLA_CPU:0, XLA_CPU, 17179869184, 9980332687831749187)
+INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:TPU:0, TPU, 17179869184, 8947103849374546553)
+INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:TPU:1, TPU, 17179869184, 4213416011922690214)
+INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:TPU:2, TPU, 17179869184, 15616481714830135091)
+INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:TPU:3, TPU, 17179869184, 13871575216974809206)
+INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:TPU:4, TPU, 17179869184, 9937022963750096311)
+INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:TPU:5, TPU, 17179869184, 3252562427860894014)
+INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:TPU:6, TPU, 17179869184, 11026159011584157919)
+INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:TPU:7, TPU, 17179869184, 11981044198069083955)
+INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:TPU_SYSTEM:0, TPU_SYSTEM, 17179869184, 12824875308257154405)
+INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:2/device:CPU:0, CPU, -1, 10633547163736325041)
+INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:2/device:XLA_CPU:0, XLA_CPU, 17179869184, 16045755501792334015)
+INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:2/device:TPU:0, TPU, 17179869184, 12129394382619302045)
+INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:2/device:TPU:1, TPU, 17179869184, 6684817480289686800)
+INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:2/device:TPU:2, TPU, 17179869184, 16351739577914469670)
+INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:2/device:TPU:3, TPU, 17179869184, 685761346238988824)
+INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:2/device:TPU:4, TPU, 17179869184, 16911927424024547348)
+INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:2/device:TPU:5, TPU, 17179869184, 3976850050032199249)
+INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:2/device:TPU:6, TPU, 17179869184, 5050767736490930725)
+INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:2/device:TPU:7, TPU, 17179869184, 13904176577681455122)
+INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:2/device:TPU_SYSTEM:0, TPU_SYSTEM, 17179869184, 14056511121655570549)
+INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:1/device:CPU:0, CPU, -1, 7225972027071662457)
+INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:1/device:XLA_CPU:0, XLA_CPU, 17179869184, 6953306375494394174)
+INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:1/device:TPU:0, TPU, 17179869184, 16327614571047104923)
+INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:1/device:TPU:1, TPU, 17179869184, 16200720888767644637)
+INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:1/device:TPU:2, TPU, 17179869184, 278481733651406509)
+INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:1/device:TPU:3, TPU, 17179869184, 14290501273212886074)
+INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:1/device:TPU:4, TPU, 17179869184, 4780103638079306872)
+INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:1/device:TPU:5, TPU, 17179869184, 9279866773059931917)
+INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:1/device:TPU:6, TPU, 17179869184, 6357732512922480451)
+INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:1/device:TPU:7, TPU, 17179869184, 5208061090655644738)
+INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:1/device:TPU_SYSTEM:0, TPU_SYSTEM, 17179869184, 1712633352550573785)
+INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:3/device:CPU:0, CPU, -1, 8307807625834838164)
+INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:3/device:XLA_CPU:0, XLA_CPU, 17179869184, 3182927839448598469)
+INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:3/device:TPU:0, TPU, 17179869184, 2604590533489011903)
+INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:3/device:TPU:1, TPU, 17179869184, 10691318861664219581)
+INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:3/device:TPU:2, TPU, 17179869184, 5660528281219115314)
+INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:3/device:TPU:3, TPU, 17179869184, 10500828718975730751)
+INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:3/device:TPU:4, TPU, 17179869184, 17302308092041411010)
+INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:3/device:TPU:5, TPU, 17179869184, 7293088386408486576)
+INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:3/device:TPU:6, TPU, 17179869184, 10119802139807214859)
+INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:3/device:TPU:7, TPU, 17179869184, 8910580355082783560)
+INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:3/device:TPU_SYSTEM:0, TPU_SYSTEM, 17179869184, 1327517950237270721)
+WARNING:tensorflow:From /home/shengyushen_gmail_com/.local/lib/python2.7/site-packages/tensorflow/python/ops/resource_variable_ops.py:435: colocate_with (from tensorflow.python.framework.ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Colocations handled automatically by placer.
+INFO:tensorflow:Calling model_fn.
+INFO:tensorflow:Reading data files from gs://ssystore1/transformer/data/translate_ende_wmt32k_packed-train*
+INFO:tensorflow:partition: 0 num_data_files: 100
+WARNING:tensorflow:From /home/shengyushen_gmail_com/.local/lib/python2.7/site-packages/tensor2tensor/utils/data_reader.py:275: tf_record_iterator (from tensorflow.python.lib.io.tf_record) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use eager execution and: 
+`tf.data.TFRecordDataset(path)`
+WARNING:tensorflow:From /home/shengyushen_gmail_com/.local/lib/python2.7/site-packages/tensor2tensor/utils/data_reader.py:37: to_int32 (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.cast instead.
+INFO:tensorflow:num_cores_per_replica: 1
+INFO:tensorflow:computation_shape: [1, 1, 1]
+INFO:tensorflow:num_replicas: 32
+INFO:tensorflow:device_assignment.topology.device_coordinates: [[[0 2 0]
+  [0 2 1]
+  [0 3 0]
+  [0 3 1]
+  [1 2 0]
+  [1 2 1]
+  [1 3 0]
+  [1 3 1]]
+
+ [[0 1 0]
+  [0 1 1]
+  [0 0 0]
+  [0 0 1]
+  [1 1 0]
+  [1 1 1]
+  [1 0 0]
+  [1 0 1]]
+
+ [[3 2 0]
+  [3 2 1]
+  [3 3 0]
+  [3 3 1]
+  [2 2 0]
+  [2 2 1]
+  [2 3 0]
+  [2 3 1]]
+
+ [[3 1 0]
+  [3 1 1]
+  [3 0 0]
+  [3 0 1]
+  [2 1 0]
+  [2 1 1]
+  [2 0 0]
+  [2 0 1]]]
+INFO:tensorflow:device_assignment.core_assignment: [[[0 0 0]]
+
+ [[0 0 1]]
+
+ [[0 1 0]]
+
+ [[0 1 1]]
+
+ [[0 2 0]]
+
+ [[0 2 1]]
+
+ [[0 3 0]]
+
+ [[0 3 1]]
+
+ [[1 0 0]]
+
+ [[1 0 1]]
+
+ [[1 1 0]]
+
+ [[1 1 1]]
+
+ [[1 2 0]]
+
+ [[1 2 1]]
+
+ [[1 3 0]]
+
+ [[1 3 1]]
+
+ [[2 0 0]]
+
+ [[2 0 1]]
+
+ [[2 1 0]]
+
+ [[2 1 1]]
+
+ [[2 2 0]]
+
+ [[2 2 1]]
+
+ [[2 3 0]]
+
+ [[2 3 1]]
+
+ [[3 0 0]]
+
+ [[3 0 1]]
+
+ [[3 1 0]]
+
+ [[3 1 1]]
+
+ [[3 2 0]]
+
+ [[3 2 1]]
+
+ [[3 3 0]]
+
+ [[3 3 1]]]
+INFO:tensorflow:Setting T2TModel mode to 'train'
+INFO:tensorflow:Error recorded from training_loop: invalid literal for int() with base 10: '32"'
+INFO:tensorflow:training_loop marked as finished
+WARNING:tensorflow:Reraising captured error
 Traceback (most recent call last):
   File "/home/shengyushen_gmail_com/.local/bin/t2t-trainer", line 33, in <module>
     tf.app.run()
@@ -38,10 +207,62 @@ Traceback (most recent call last):
     _sys.exit(main(argv))
   File "/home/shengyushen_gmail_com/.local/bin/t2t-trainer", line 28, in main
     t2t_trainer.main(argv)
-  File "/home/shengyushen/.local/lib/python2.7/site-packages/tensor2tensor/bin/t2t_trainer.py", line 398, in main
-    exp = exp_fn(create_run_config(hparams), hparams)
-  File "/home/shengyushen/.local/lib/python2.7/site-packages/tensor2tensor/utils/trainer_lib.py", line 774, in experiment_fn
-    return create_experiment(run_config, hparams, *args, **kwargs)
-  File "/home/shengyushen/.local/lib/python2.7/site-packages/tensor2tensor/utils/trainer_lib.py", line 720, in create_experiment
-    raise ValueError("Eval is not currently supported on a TPU Pod")
-ValueError: Eval is not currently supported on a TPU Pod
+  File "/home/shengyushen_gmail_com/.local/lib/python2.7/site-packages/tensor2tensor/bin/t2t_trainer.py", line 401, in main
+    execute_schedule(exp)
+  File "/home/shengyushen_gmail_com/.local/lib/python2.7/site-packages/tensor2tensor/bin/t2t_trainer.py", line 356, in execute_schedule
+    getattr(exp, FLAGS.schedule)()
+  File "/home/shengyushen_gmail_com/.local/lib/python2.7/site-packages/tensor2tensor/utils/trainer_lib.py", line 417, in train
+    max_steps=max_steps or self._train_spec.max_steps)
+  File "/home/shengyushen_gmail_com/.local/lib/python2.7/site-packages/tensorflow/contrib/tpu/python/tpu/tpu_estimator.py", line 2457, in train
+    rendezvous.raise_errors()
+  File "/home/shengyushen_gmail_com/.local/lib/python2.7/site-packages/tensorflow/contrib/tpu/python/tpu/error_handling.py", line 128, in raise_errors
+    six.reraise(typ, value, traceback)
+  File "/home/shengyushen_gmail_com/.local/lib/python2.7/site-packages/tensorflow/contrib/tpu/python/tpu/tpu_estimator.py", line 2452, in train
+    saving_listeners=saving_listeners)
+  File "/home/shengyushen_gmail_com/.local/lib/python2.7/site-packages/tensorflow_estimator/python/estimator/estimator.py", line 358, in train
+    loss = self._train_model(input_fn, hooks, saving_listeners)
+  File "/home/shengyushen_gmail_com/.local/lib/python2.7/site-packages/tensorflow_estimator/python/estimator/estimator.py", line 1124, in _train_model
+    return self._train_model_default(input_fn, hooks, saving_listeners)
+  File "/home/shengyushen_gmail_com/.local/lib/python2.7/site-packages/tensorflow_estimator/python/estimator/estimator.py", line 1154, in _train_model_default
+    features, labels, model_fn_lib.ModeKeys.TRAIN, self.config)
+  File "/home/shengyushen_gmail_com/.local/lib/python2.7/site-packages/tensorflow/contrib/tpu/python/tpu/tpu_estimator.py", line 2251, in _call_model_fn
+    config)
+  File "/home/shengyushen_gmail_com/.local/lib/python2.7/site-packages/tensorflow_estimator/python/estimator/estimator.py", line 1112, in _call_model_fn
+    model_fn_results = self._model_fn(features=features, **kwargs)
+  File "/home/shengyushen_gmail_com/.local/lib/python2.7/site-packages/tensorflow/contrib/tpu/python/tpu/tpu_estimator.py", line 2558, in _model_fn
+    _train_on_tpu_system(ctx, model_fn_wrapper, dequeue_fn))
+  File "/home/shengyushen_gmail_com/.local/lib/python2.7/site-packages/tensorflow/contrib/tpu/python/tpu/tpu_estimator.py", line 2893, in _train_on_tpu_system
+    device_assignment=ctx.device_assignment)
+  File "/home/shengyushen_gmail_com/.local/lib/python2.7/site-packages/tensorflow/contrib/tpu/python/tpu/tpu.py", line 890, in split_compile_and_shard
+    name=name)
+  File "/home/shengyushen_gmail_com/.local/lib/python2.7/site-packages/tensorflow/contrib/tpu/python/tpu/tpu.py", line 689, in split_compile_and_replicate
+    outputs = computation(*computation_inputs)
+  File "/home/shengyushen_gmail_com/.local/lib/python2.7/site-packages/tensorflow/contrib/tpu/python/tpu/tpu_estimator.py", line 2886, in multi_tpu_train_steps_on_single_shard
+    [_INITIAL_LOSS])
+  File "/home/shengyushen_gmail_com/.local/lib/python2.7/site-packages/tensorflow/contrib/tpu/python/tpu/training_loop.py", line 208, in repeat
+    cond, body_wrapper, inputs=inputs, infeed_queue=infeed_queue, name=name)
+  File "/home/shengyushen_gmail_com/.local/lib/python2.7/site-packages/tensorflow/contrib/tpu/python/tpu/training_loop.py", line 170, in while_loop
+    condition_wrapper, body_wrapper, inputs, name="", parallel_iterations=1)
+  File "/home/shengyushen_gmail_com/.local/lib/python2.7/site-packages/tensorflow/python/ops/control_flow_ops.py", line 3556, in while_loop
+    return_same_structure)
+  File "/home/shengyushen_gmail_com/.local/lib/python2.7/site-packages/tensorflow/python/ops/control_flow_ops.py", line 3087, in BuildLoop
+    pred, body, original_loop_vars, loop_vars, shape_invariants)
+  File "/home/shengyushen_gmail_com/.local/lib/python2.7/site-packages/tensorflow/python/ops/control_flow_ops.py", line 3022, in _BuildLoop
+    body_result = body(*packed_vars_for_body)
+  File "/home/shengyushen_gmail_com/.local/lib/python2.7/site-packages/tensorflow/contrib/tpu/python/tpu/training_loop.py", line 121, in body_wrapper
+    outputs = body(*(inputs + dequeue_ops))
+  File "/home/shengyushen_gmail_com/.local/lib/python2.7/site-packages/tensorflow/contrib/tpu/python/tpu/training_loop.py", line 204, in body_wrapper
+    return [i + 1] + _convert_to_list(body(*args))
+  File "/home/shengyushen_gmail_com/.local/lib/python2.7/site-packages/tensorflow/contrib/tpu/python/tpu/tpu_estimator.py", line 1359, in train_step
+    self._call_model_fn(features, labels))
+  File "/home/shengyushen_gmail_com/.local/lib/python2.7/site-packages/tensorflow/contrib/tpu/python/tpu/tpu_estimator.py", line 1593, in _call_model_fn
+    estimator_spec = self._model_fn(features=features, **kwargs)
+  File "/home/shengyushen_gmail_com/.local/lib/python2.7/site-packages/tensor2tensor/utils/t2t_model.py", line 1414, in wrapping_model_fn
+    use_tpu=use_tpu)
+  File "/home/shengyushen_gmail_com/.local/lib/python2.7/site-packages/tensor2tensor/utils/mtf_model.py", line 71, in estimator_model_fn
+    mesh_shape = mtf.convert_to_shape(hparams.mesh_shape)
+  File "/home/shengyushen_gmail_com/.local/lib/python2.7/site-packages/mesh_tensorflow/ops.py", line 190, in convert_to_shape
+    x = _parse_string_to_list_of_pairs(x, seconds_to_int=True)
+  File "/home/shengyushen_gmail_com/.local/lib/python2.7/site-packages/mesh_tensorflow/ops.py", line 4164, in _parse_string_to_list_of_pairs
+    ret.append((p[0], int(p[1])))
+ValueError: invalid literal for int() with base 10: '32"'
