@@ -1,0 +1,4 @@
+nvprof-mnist-2019-04-16-22:25:06.nvvp : no device
+nvprof-mnist-2019-04-16-23:18:06.nvvp : 4 device with row /column dim divided
+nvprof-mnist-2019-04-17-02:59:09.nvvp : 8 device with b1:4;b2:2
+

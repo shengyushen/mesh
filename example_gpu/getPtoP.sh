@@ -1,0 +1,4 @@
+grep PtoP $1 | awk -F, '{x=substr($19,2,length($19)-2);split(x,ax," ");x19=substr(ax[3],2,length(ax[3])-2);x=substr($21,2,length($21)-2);split(x,ax," ");x21=substr(ax[3],2,length(ax[3])-2);print x19 " " x21 " " $12 }' > p2p
+cat p2p|awk '{arr[$1][$2]=arr[$1][$2]+$3} END{for(x in arr) {for (y in arr[x]) {print x " " y " " arr[x][y]}}}' > p2p1
+cat p2p1 |awk 'BEGIN{first=1} {if(first==1) {first=0;for(i=0;i<$1;i=i+1){for(j=0;j<=7;j=j+1) {print i " " j " 0"}}; for(i=0;i<$2;i=i+1) {print $1 " " i " 0" } } else if($1!=last ) {if(last2!=7) {for(i=last2+1;i<=7;i=i+1) {print last " " i " 0"}};print "";for(i=0;i<$2;i=i+1) {print $1 " " i " 0"}} else if($2!=last2+1) {for(i=last2+1;i<$2;i=i+1) print $1 " " i " 0" };last =$1;last2=$2;print} END{for(i=last2+1;i<=7;i=i+1) {print last " " i " 0"}}' > p2p2
+gnuplot -p -e 'set zlabel "traffic(MB)";set xlabel "src";set ylabel "dst";set view 60,150,1,1;set pm3d at b;splot "p2p2" u 1:2:3 with lines '
