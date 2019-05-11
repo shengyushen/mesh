@@ -1,2 +1,12 @@
 runt2t.sh : batch 8 on tpuv2-8
 runt2tb32.sh : batch 32 on tpuv2-32
+runt2tm4b8.sh : model 4 batch 8 on tpuv2-32
+
+capture.sh : you need to wait for the following appear
+INFO:tensorflow:loss = 10.5, step = 300 (24.180 sec)
+and reach stable 
+run it and get capture_gened.sh
+and then run capture_gened.sh
+
+
+
