@@ -1,3 +1,9 @@
+GPU result:
+example_gpu/
+example_gpu_data/
+
+
+TPU result:
 runt2t.sh : batch 8 on tpuv2-8
 runt2tb32.sh : batch 32 on tpuv2-32
 runt2tm4b8.sh : model 4 batch 8 on tpuv2-32
